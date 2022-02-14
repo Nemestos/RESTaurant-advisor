@@ -2,7 +2,7 @@ FROM php:8.0.0-fpm
 ENV TZ=Europe/Paris
 COPY rest-api/composer.lock rest-api/composer.json /var/www/
 WORKDIR /var/www
-
+RUN sudo chmod 755 /var/log
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \

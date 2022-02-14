@@ -35,13 +35,10 @@ services:
   db:
     container_name: "api_db"
     image: mongo:latest
-    hostname: mongodb
-
     volumes:
-      - ./mongodb/mongod.conf:/etc/mongod.conf
-      - ./mongodb/initdb.d/:/docker-entrypoint-initdb.d/
+
       - ./.docker/mongodb/data/db/:/data/db/
-      - ./.docker/mongodb/data/log/:/var/log/mongodb/
+
     env_file:
       - .env
     environment:
@@ -50,7 +47,6 @@ services:
       MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
     ports:
       - "27018:27017"
-    command: ["-f", "/etc/mongod.conf"]
     networks:
       - dev
 
