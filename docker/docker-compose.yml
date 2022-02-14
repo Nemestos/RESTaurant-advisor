@@ -37,7 +37,7 @@ services:
     image: mongo:latest
     volumes:
 
-      - ./.docker/mongodb/data/db/:/data/db/
+      - db-data:/data/db/
 
     env_file:
       - .env

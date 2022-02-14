@@ -113,6 +113,9 @@
       <path value="$PROJECT_DIR$/rest-api/vendor/dragonmantank/cron-expression" />
       <path value="$PROJECT_DIR$/rest-api/vendor/nette/schema" />
       <path value="$PROJECT_DIR$/rest-api/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/mongodb/mongodb" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/jenssegers/mongodb" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/jean85/pretty-package-versions" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
