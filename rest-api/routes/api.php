@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AuthController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/auth',[AuthController::class,'auth']);
+Route::group([
+    "middleware"=>["jwt.verify"],
+],function (){
+    Route::get("/users",[AuthController::class,"index"]);
+});
+

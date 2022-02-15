@@ -35,7 +35,7 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 # Copy existing application directory contents
 
 COPY --chown=www:www ./rest-api /var/www
-COPY --from=composer /usr/bin/composer /usr/bin/composer
+COPY --from=vendor /usr/bin/composer /usr/bin/composer
 COPY --from=vendor /var/www/vendor/ ./rest-api/vendor/
 COPY ./rest-api .
 RUN php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"

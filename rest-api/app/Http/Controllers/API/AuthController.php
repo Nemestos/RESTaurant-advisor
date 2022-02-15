@@ -3,14 +3,25 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function index(Request $request){
+        $token = JWTAuth::getToken();
+        $user = JWTAuth::authenticate($request->bearerToken());
+        return(response()->json(["user"=>auth()->user()]));
+        if(!$user->can('viewAny',$user)){
+            return response()->json(["message"=>"You cannot view all the users"],400);
+        }
+        return UserResource::collection(User::all());
+    }
     /**
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -26,6 +37,7 @@ class AuthController extends Controller
         if(!$token){
             return response()->json(['error'=>'Unauthorized'],400);
         }
+
         return $this->createNewToken($token);
     }
     /**
@@ -46,6 +58,7 @@ class AuthController extends Controller
         }
         $validated = $validator->validated();
         $validated["password"] = bcrypt($validated["password"]);
+        $validated["role"]="user";
         $user = User::create($validated);
         return response()->json([
             'data' => $user,
