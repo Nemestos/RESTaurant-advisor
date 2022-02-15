@@ -4,6 +4,7 @@ npm-debug.log
 yarn-error.log
 docker/vendor
 docker/.docker
+rest-api/composer.lock
 # Laravel 4 specific
 bootstrap/compiled.php
 app/storage/

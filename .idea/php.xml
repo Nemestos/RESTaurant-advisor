@@ -116,6 +116,9 @@
       <path value="$PROJECT_DIR$/rest-api/vendor/mongodb/mongodb" />
       <path value="$PROJECT_DIR$/rest-api/vendor/jenssegers/mongodb" />
       <path value="$PROJECT_DIR$/rest-api/vendor/jean85/pretty-package-versions" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/tymon/jwt-auth" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/lcobucci/jwt" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

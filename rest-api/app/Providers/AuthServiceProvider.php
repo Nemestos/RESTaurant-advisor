@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Http\MongoAccessToken;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Sanctum\Sanctum;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Sanctum::usePersonalAccessTokenModel(MongoAccessToken::class);
     }
 }
