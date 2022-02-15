@@ -1,18 +1,17 @@
 FROM composer:latest as vendor
-WORKDIR /var/www
-COPY rest-api/composer.json composer.json
-COPY rest-api/composer.lock composer.lock
-RUN composer install \
-    --no-interaction \
-    --no-plugins \
-    --no-scripts \
+WORKDIR /app
+COPY ./rest-api/composer.json /app
+COPY ./rest-api/composer.lock* /app
+
+RUN composer install  \
+    --ignore-platform-reqs \
     --no-dev \
-    --prefer-dist \
-    --ignore-platform-reqs
-COPY ./rest-api .
+    --no-ansi\
+    --no-interaction \
+    --no-scripts
+
 
 FROM php:8.0.0-fpm as builder
-
 # Install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends --no-install-suggests   \
     libzip-dev \
@@ -28,20 +27,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends --no-install-su
   && rm -rf /tmp/* /var/lib/apt/lists/*
 
 
-# Add user for laravel application
-RUN groupadd -g 1000 www
-RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory contents
+WORKDIR /var/www
 
-COPY --chown=www:www ./rest-api /var/www
+COPY  ./rest-api /var/www
 COPY --from=vendor /usr/bin/composer /usr/bin/composer
-COPY --from=vendor /var/www/vendor/ ./rest-api/vendor/
-COPY ./rest-api .
+RUN composer update --no-scripts
 RUN php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 RUN php artisan jwt:secret
+RUN php artisan key:generate
+RUN chown -R www-data:www-data /var/www/storage
 
-# Change current user to www
-USER www
+
 
 EXPOSE 9000
