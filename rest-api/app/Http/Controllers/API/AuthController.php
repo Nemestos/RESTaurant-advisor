@@ -15,8 +15,8 @@ class AuthController extends Controller
 {
     public function index(Request $request){
         $token = JWTAuth::getToken();
+
         $user = JWTAuth::authenticate($request->bearerToken());
-        return(response()->json(["user"=>auth()->user()]));
         if(!$user->can('viewAny',$user)){
             return response()->json(["message"=>"You cannot view all the users"],400);
         }

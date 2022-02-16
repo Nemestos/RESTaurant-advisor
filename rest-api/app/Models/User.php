@@ -14,7 +14,7 @@ class User extends Authenticatable implements JWTSubject
 {
     use HasFactory;
     protected $connection = 'mongodb';
-
+    protected $primaryKey = "login";
     protected $fillable =[
         'login',
         'email',
