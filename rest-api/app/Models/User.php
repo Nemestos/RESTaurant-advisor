@@ -24,9 +24,7 @@ class User extends Authenticatable implements JWTSubject
         'age',
         'role'
     ];
-    protected $hidden =[
-        "password"
-    ];
+
     protected $collection="users";
 
     public function getJWTIdentifier()
