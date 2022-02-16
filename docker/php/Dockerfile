@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends --no-install-su
     openssl \
     libssl-dev \
     libcurl4-openssl-dev \
+    zsh\
   && docker-php-ext-install \
     zip \
     exif \
@@ -38,6 +39,7 @@ RUN php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServic
 RUN php artisan jwt:secret
 RUN php artisan key:generate
 RUN chown -R www-data:www-data /var/www/storage
+
 
 
 

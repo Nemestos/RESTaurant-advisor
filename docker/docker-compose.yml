@@ -10,6 +10,10 @@ services:
     environment:
       - APP_ENV=${APP_ENV}
       - APP_SECRET=${APP_SECRET}
+    volumes:
+      - ../rest-api:/var/www
+      - /var/www/vendor
+      - /var/www/storage
 
     networks:
       - dev
@@ -21,6 +25,9 @@ services:
     tty: true
     volumes:
       - ../rest-api:/var/www
+      - /var/www/vendor
+      - /var/www/storage
+
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - "81:80"
