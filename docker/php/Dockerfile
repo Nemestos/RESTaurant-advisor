@@ -19,12 +19,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends --no-install-su
     libssl-dev \
     libcurl4-openssl-dev \
     zsh\
+    libpq-dev\
   && docker-php-ext-install \
     zip \
-    exif \
-    pcntl \
-  && pecl install mongodb \
-      &&  echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongo.ini \
+    pdo \
+    pdo_pgsql\
   && rm -rf /tmp/* /var/lib/apt/lists/*
 
 
@@ -34,10 +33,12 @@ WORKDIR /var/www
 
 COPY  ./rest-api /var/www
 COPY --from=vendor /usr/bin/composer /usr/bin/composer
-RUN composer update --no-scripts
+
 #RUN php artisan mongodb-passport:install
-#RUN php artisan key:generate
-#RUN composer dump-autoload
+RUN composer update
+RUN composer dump-autoload
+RUN php artisan key:generate
+RUN php artisan config:cache
 
 RUN chown -R www-data:www-data /var/www/storage
 

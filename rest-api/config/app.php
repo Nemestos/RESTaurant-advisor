@@ -165,9 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-        hypndev\Mongodb\MongodbPassportServiceProvider::class,
 
-        Laravel\Passport\PassportServiceProvider::class,
         /*
          * Application Service Providers...
          */
