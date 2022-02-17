@@ -13,33 +13,38 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $token = JWTAuth::getToken();
 
-        $user = JWTAuth::authenticate($request->bearerToken());
-        if(!$user->can('viewAny',$user)){
-            return response()->json(["message"=>"You cannot view all the users"],400);
-        }
+        $user = $this->getAuthenticatedUser($token);
+        dd(JWTAuth::toUser($token));
+//        if (!$user->can('viewAny', $user)) {
+//            return response()->json(["message" => "You cannot view all the users"], 400);
+//        }
         return UserResource::collection(User::all());
     }
+
     /**
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function auth(Request $request){
-        $validator = Validator::make($request->all(),[
-            'login'=>'required|string',
-            'password'=>'required|string'
+    public function auth(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'login' => 'required|string',
+            'password' => 'required|string'
         ]);
-        if ($validator->fails()){
-            return response()->json($validator->errors(),400);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
         }
         $token = auth()->attempt($validator->validated());
-        if(!$token){
-            return response()->json(['error'=>'Unauthorized'],400);
+        if (!$token) {
+            return response()->json(['error' => 'Unauthorized'], 400);
         }
 
         return $this->createNewToken($token);
     }
+
     /**
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -54,16 +59,18 @@ class AuthController extends Controller
             'age' => 'required|integer|min:1'
         ]);
         if ($validator->fails()) {
-            return response()->json($validator->errors(),400);
+            return response()->json($validator->errors(), 400);
         }
         $validated = $validator->validated();
         $validated["password"] = bcrypt($validated["password"]);
-        $validated["role"]="user";
+        $validated["role"] = "user";
         $user = User::create($validated);
+//        $token = $user->createToken('Laravel8PassportAuth')->accessToken;
         return response()->json([
             'data' => $user,
+//            'token'=>$token
 
-        ],201);
+        ], 201);
 
     }
 
@@ -75,5 +82,14 @@ class AuthController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60,
             'user' => auth()->user()
         ]);
+    }
+
+    public function userInfo()
+    {
+
+        $user = auth()->user();
+
+        return response()->json(['user' => $user], 200);
+
     }
 }

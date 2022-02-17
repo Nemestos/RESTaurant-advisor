@@ -38,19 +38,19 @@ services:
       - php
   db:
     container_name: "api_db"
-    image: mongo:latest
+    image: postgres:latest
     volumes:
 
-      - db-data:/data/db/
+      - db-data:/var/lib/postgresql/data
 
     env_file:
       - .env
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      - "27018:27017"
+      - "54320:5432"
     networks:
       - dev
 

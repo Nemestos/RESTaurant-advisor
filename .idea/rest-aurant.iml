@@ -25,7 +25,6 @@
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/nette/schema" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/nette/utils" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/nikic/php-parser" />
-      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/tymon/jwt-auth" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/facade/ignition-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/facade/ignition" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/facade/flare-client-php" />
@@ -34,7 +33,6 @@
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/league/config" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/league/commonmark" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/league/mime-type-detection" />
-      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/namshi/jose" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/nesbot/carbon" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/ramsey/uuid" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/ramsey/collection" />
@@ -126,6 +124,19 @@
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/graham-campbell/result-type" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/defuse/php-encryption" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/phpseclib/phpseclib" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/laravel/passport" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/symfony/psr-http-message-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/nyholm/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/php-http/message-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/paragonie/random_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/paragonie/constant_time_encoding" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/lcobucci/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/firebase/php-jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/league/oauth2-server" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/league/event" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/hypnodev/laravel-mongodb-passport" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

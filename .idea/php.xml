@@ -18,7 +18,6 @@
       <path value="$PROJECT_DIR$/rest-api/vendor/nette/schema" />
       <path value="$PROJECT_DIR$/rest-api/vendor/nette/utils" />
       <path value="$PROJECT_DIR$/rest-api/vendor/nikic/php-parser" />
-      <path value="$PROJECT_DIR$/rest-api/vendor/tymon/jwt-auth" />
       <path value="$PROJECT_DIR$/rest-api/vendor/facade/ignition-contracts" />
       <path value="$PROJECT_DIR$/rest-api/vendor/facade/ignition" />
       <path value="$PROJECT_DIR$/rest-api/vendor/facade/flare-client-php" />
@@ -27,7 +26,6 @@
       <path value="$PROJECT_DIR$/rest-api/vendor/league/config" />
       <path value="$PROJECT_DIR$/rest-api/vendor/league/commonmark" />
       <path value="$PROJECT_DIR$/rest-api/vendor/league/mime-type-detection" />
-      <path value="$PROJECT_DIR$/rest-api/vendor/namshi/jose" />
       <path value="$PROJECT_DIR$/rest-api/vendor/nesbot/carbon" />
       <path value="$PROJECT_DIR$/rest-api/vendor/ramsey/uuid" />
       <path value="$PROJECT_DIR$/rest-api/vendor/ramsey/collection" />
@@ -119,9 +117,22 @@
       <path value="$PROJECT_DIR$/rest-api/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/rest-api/vendor/graham-campbell/result-type" />
       <path value="$PROJECT_DIR$/rest-api/vendor/composer" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/defuse/php-encryption" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/laravel/passport" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/psr-http-message-bridge" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/nyholm/psr7" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/php-http/message-factory" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/league/oauth2-server" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/league/event" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/hypnodev/laravel-mongodb-passport" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
   <component name="PhpUnit">
     <phpunit_settings>
       <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/rest-api/vendor/autoload.php" />

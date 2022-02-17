@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/auth',[AuthController::class,'auth']);
 Route::group([
-    "middleware"=>["jwt.verify"],
+    "middleware"=>["auth:api"],
 ],function (){
     Route::get("/users",[AuthController::class,"index"]);
 });

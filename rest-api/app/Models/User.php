@@ -4,18 +4,17 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Jenssegers\Mongodb\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-use Jenssegers\Mongodb\Auth\User as Authenticatable;
-use Laravel\Sanctum\HasApiTokens;
-use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject
+use hypnodev\Mongodb\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
+
+class User extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens;
+
     protected $connection = 'mongodb';
     protected $primaryKey = "login";
-    protected $fillable =[
+    protected $fillable = [
         'login',
         'email',
         'name',
@@ -25,21 +24,14 @@ class User extends Authenticatable implements JWTSubject
         'role'
     ];
 
-    protected $collection="users";
+    protected $collection = "users";
 
-    public function getJWTIdentifier()
-    {
-        $this->getKey();
-    }
 
-    public function getJWTCustomClaims(): array
-    {
-        return [];
-    }
     public function getAuthPassword()
     {
         return $this->password;
     }
+
     public function getAuthIdentifier()
     {
         return $this->login;

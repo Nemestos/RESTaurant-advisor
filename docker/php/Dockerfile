@@ -35,11 +35,11 @@ WORKDIR /var/www
 COPY  ./rest-api /var/www
 COPY --from=vendor /usr/bin/composer /usr/bin/composer
 RUN composer update --no-scripts
-RUN php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
-RUN php artisan jwt:secret
-RUN php artisan key:generate
-RUN chown -R www-data:www-data /var/www/storage
+#RUN php artisan mongodb-passport:install
+#RUN php artisan key:generate
+#RUN composer dump-autoload
 
+RUN chown -R www-data:www-data /var/www/storage
 
 
 
