@@ -120,6 +120,7 @@
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/nunomaduro/collision" />
       <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/rest-api/vendor/jzonta/faker-restaurant" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

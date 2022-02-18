@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function index(Request $request)
-    {
-
-        return UserResource::collection(User::all());
-    }
+//    public function index(Request $request)
+//    {
+//
+//        return UserResource::collection(User::all());
+//    }
 
     /**
      * @throws \Illuminate\Validation\ValidationException
@@ -65,9 +65,9 @@ class AuthController extends Controller
     }
 
 
-    public function userInfo()
-    {
-        $user = auth()->user();
-        return response()->json(['user' => $user], 200);
-    }
+//    public function userInfo()
+//    {
+//        $user = auth()->user();
+//        return response()->json(['user' => $user], 200);
+//    }
 }

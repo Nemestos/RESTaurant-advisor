@@ -113,6 +113,7 @@
       <path value="$PROJECT_DIR$/rest-api/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/rest-api/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/rest-api/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/jzonta/faker-restaurant" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
