@@ -31,16 +31,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends --no-install-su
 # Copy existing application directory contents
 WORKDIR /var/www
 
-COPY  ./rest-api /var/www
+COPY --chown=www-data:www-data ./rest-api /var/www
 COPY --from=vendor /usr/bin/composer /usr/bin/composer
 
 #RUN php artisan mongodb-passport:install
 RUN composer update
-RUN composer dump-autoload
 RUN php artisan key:generate
 RUN php artisan config:cache
+RUN php artisan cache:clear
+RUN chmod -R 777 storage/
+RUN composer dump-autoload
 
-RUN chown -R www-data:www-data /var/www/storage
 
 
 

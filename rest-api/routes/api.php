@@ -16,11 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/register',[AuthController::class,'register']);
-Route::post('/auth',[AuthController::class,'auth']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/auth', [AuthController::class, 'auth'])->name("login");
+
 Route::group([
-    "middleware"=>["auth:api"],
-],function (){
-    Route::get("/users",[AuthController::class,"index"]);
+    "middleware" => ["auth:sanctum"],
+], function () {
+    Route::get("/users", [AuthController::class, "index"])->middleware(["ability:get_users"]);
+
 });
 

@@ -2,7 +2,11 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Laravel\Sanctum\Exceptions\MissingAbilityException;
+use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -34,8 +38,18 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (AccessDeniedHttpException $e, $request) {
+            $m = $e->getMessage();
+            return response()->json(["message" => $m != null ? $m : "You don't have the rights"], 400);
+
+        });
+        $this->renderable(function (AuthenticationException $e, $request) {
+            $m = $e->getMessage();
+            return response()->json(["message" => $m != null ? $m : "You are not auth"], 400);
+        });
+        $this->renderable(function (MissingAbilityException $e, $request) {
+            $m = $e->getMessage();
+            return response()->json(["message" => $m != null ? $m : "You don't have the ability"], 400);
         });
     }
 }

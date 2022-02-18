@@ -3,15 +3,16 @@
 namespace App\Models;
 
 
+use App\Token;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Laravel\Passport\HasApiTokens;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use HasFactory, HasApiTokens;
 
-    protected $connection = 'mongodb';
-    protected $primaryKey = "login";
+    protected $primaryKey = "id";
     protected $fillable = [
         'login',
         'email',
@@ -19,20 +20,37 @@ class User extends Authenticatable
         "password",
         'firstname',
         'age',
-        'role'
     ];
 
-    protected $collection = "users";
-
-
-    public function getAuthPassword()
+    public static function createNormalUser(?array $infos): array
     {
-        return $this->password;
+
+        $infos["password"] = bcrypt($infos["password"]);
+        $user = User::create($infos);
+        $token = User::attachNewToken($user, Token::USER_ABILITIES);
+        return array($user, $token);
     }
 
-    public function getAuthIdentifier()
+    public static function refreshToken(User $user): \Laravel\Sanctum\NewAccessToken
     {
-        return $this->login;
+        $user->tokens()->delete();
+        return User::attachNewToken($user, Token::USER_ABILITIES);
+
     }
+
+    public static function attachNewToken(User $user, array $abilities): \Laravel\Sanctum\NewAccessToken
+    {
+        return $user->createToken("auth_token", $abilities);
+    }
+
+    public static function formNewToken($token): \Illuminate\Http\JsonResponse
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+
+        ]);
+    }
+
 
 }
