@@ -13,6 +13,7 @@ use Tests\TestCase;
 class UsersTest extends TestCase
 {
     use RefreshDatabase;
+
     /**
      * /users
      *
@@ -41,6 +42,16 @@ class UsersTest extends TestCase
 
         $resp = $this->json("GET", "api/users");
         $resp->assertStatus(200);
+        $resp->assertJsonStructure([
+            "data" => [
+                "*" => [
+                    "username",
+                    "firstname",
+                    "name",
+                    "age"
+                ]
+            ]
+        ]);
         $resp->assertJson(function (AssertableJson $json) use ($two, $one) {
             $json
                 ->has('data', 2)

@@ -47,7 +47,20 @@ class   RestaurantTest extends TestCase
 
         $resp = $this->json("GET", "api/restaurants");
         $resp->assertStatus(200);
-
+        $resp->assertJsonStructure([
+            "data" => [
+                "*" => [
+                    "id",
+                    "name",
+                    "description",
+                    "grade",
+                    "localization",
+                    "phone_number",
+                    "website",
+                    "hours",
+                ]
+            ]
+        ]);
         $resp->assertJson(function (AssertableJson $json) use ($one, $two) {
             $json
                 ->has('data', 2)
@@ -112,7 +125,20 @@ class   RestaurantTest extends TestCase
             "id" => $restaurant->id
         ]);
     }
+    /**
+     * @depends test_if_we_can_create_restaurant_when_admin
+     * /restaurant/{id}
+     * @return void
+     */
+    public function test_if_we_cant_delete_missing_restaurant()
+    {
+//        $restaurant = Restaurant::factory()->createOne();
+        $user = User::factory()->makeOne();
+        Sanctum::actingAs($user, Token::ADMIN_ABILITIES);
+        $resp = $this->json('DELETE', 'api/restaurant/' . strval(99));
+        $resp->assertStatus(400);
 
+    }
     /**
      * @depends test_if_we_can_create_restaurant_when_admin
      * /restaurant/{id}
@@ -123,12 +149,30 @@ class   RestaurantTest extends TestCase
         $restaurant = Restaurant::factory()->createOne();
         $user = User::factory()->makeOne();
         Sanctum::actingAs($user, Token::ADMIN_ABILITIES);
-        $resp = $this->json('PUT', 'api/restaurant/'.strval($restaurant->id),["name"=>"who are you","description"=>"mais"]);
+        $resp = $this->json('PUT', 'api/restaurant/' . strval($restaurant->id), ["name" => "who are you", "description" => "mais"]);
         $resp->assertStatus(200);
         $this->assertDatabaseHas("restaurants", [
             "name" => "who are you",
-            "description"=>"mais"
+            "description" => "mais"
         ]);
     }
+    /**
+     * @depends test_if_we_can_create_restaurant_when_admin
+     * /restaurant/{id}
+     * @return void
+     */
+    public function test_if_we_cant_update_missing_restaurant()
+    {
+//        $restaurant = Restaurant::factory()->createOne();
+        $user = User::factory()->makeOne();
+        Sanctum::actingAs($user, Token::ADMIN_ABILITIES);
+        $resp = $this->json('PUT', 'api/restaurant/42', ["name" => "who are you", "description" => "mais"]);
+        $resp->assertStatus(400);
+//        $this->assertDatabaseHas("restaurants", [
+//            "name" => "who are you",
+//            "description" => "mais"
+//        ]);
+    }
+
 
 }

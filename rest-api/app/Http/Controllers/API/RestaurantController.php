@@ -42,7 +42,7 @@ class RestaurantController extends Controller
         }
         $restaurant = Restaurant::find($id);
         if ($restaurant == null){
-            return response()->json(["message"=>"the restaurant".strval($id)."doesn't exit"]);
+            return response()->json(["message"=>"the restaurant".strval($id)."doesn't exit"],400);
         }
         $restaurant->update($validator->validated());
         return RestaurantResource::make($restaurant);
@@ -50,7 +50,7 @@ class RestaurantController extends Controller
     public function delete(Request $request,$id){
         $restaurant = Restaurant::find($id);
         if ($restaurant == null){
-            return response()->json(["message"=>"the restaurant".strval($id)."doesn't exit"]);
+            return response()->json(["message"=>"the restaurant".strval($id)."doesn't exit"],400);
         }
         $restaurant->delete();
 
