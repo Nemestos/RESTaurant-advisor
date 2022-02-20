@@ -20,5 +20,6 @@ docker-compose up --build --force-recreate
 
 ```shell
 docker-compose exec php zsh
+php artisan route:cache
 php artisan test
 ```
