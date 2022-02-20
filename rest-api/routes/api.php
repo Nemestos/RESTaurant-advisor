@@ -1,12 +1,9 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\MenuController;
 use App\Http\Controllers\API\RestaurantController;
 use App\Http\Controllers\API\UsersController;
-use App\Http\Controllers\MenuController;
-use App\Http\Resources\UserResource;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*

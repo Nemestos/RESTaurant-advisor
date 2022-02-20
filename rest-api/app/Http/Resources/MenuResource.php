@@ -17,6 +17,7 @@ class MenuResource extends JsonResource
         return [
             "id" => $this->id,
             "name" => $this->name,
+            "restaurant" => RestaurantResource::make($this->restaurant),
             "description" => $this->description,
             "price" => $this->grade,
         ];

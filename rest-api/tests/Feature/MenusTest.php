@@ -58,6 +58,7 @@ class MenusTest extends TestCase
             "data" => [
                 "*" => [
                     "name",
+                    "restaurant",
                     "description",
                     "price"
                 ]
