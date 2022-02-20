@@ -21,13 +21,15 @@ class RestaurantController extends Controller
             "website" => "required|url",
             "hours" => "required|string"
         ]);
-        if($validator->fails()){
-            return response()->json($validator->errors(),400);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
         }
-        $restaurant =Restaurant::create($validator->validated());
-        return response()->json(["data"=>$restaurant->getAttributes()],201);
+        $restaurant = Restaurant::create($validator->validated());
+        return response()->json(["data" => $restaurant->getAttributes()], 201);
     }
-    public function update(Request $request,$id){
+
+    public function update(Request $request, $id)
+    {
         $validator = Validator::make($request->all(), [
             "name" => "string|unique:restaurants",
             "description" => "string",
@@ -37,24 +39,23 @@ class RestaurantController extends Controller
             "website" => "url",
             "hours" => "string"
         ]);
-        if($validator->fails()){
-            return response()->json($validator->errors(),400);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
         }
         $restaurant = Restaurant::find($id);
-        if ($restaurant == null){
-            return response()->json(["message"=>"the restaurant".strval($id)."doesn't exit"],400);
-        }
+
         $restaurant->update($validator->validated());
         return RestaurantResource::make($restaurant);
     }
-    public function delete(Request $request,$id){
+
+    public function delete(Request $request, $id)
+    {
         $restaurant = Restaurant::find($id);
-        if ($restaurant == null){
-            return response()->json(["message"=>"the restaurant".strval($id)."doesn't exit"],400);
-        }
+
         $restaurant->delete();
 
     }
+
     public function index(Request $request)
     {
         return RestaurantResource::collection(Restaurant::all());

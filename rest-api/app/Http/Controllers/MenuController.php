@@ -13,9 +13,6 @@ class MenuController extends Controller
     public function index(Request $request, $id)
     {
         $restaurant = Restaurant::find($id);
-        if ($restaurant == null) {
-            return response()->json(["message" => "can't find this restaurant"], 400);
-        }
 
         return MenuResource::collection($restaurant->menus);
     }
@@ -32,9 +29,7 @@ class MenuController extends Controller
             return response()->json($validator->errors(), 400);
         }
         $restaurant = Restaurant::find($id);
-        if ($restaurant == null) {
-            return response()->json(["message" => "can't find this restaurant"], 400);
-        }
+
         $menu = $restaurant->menus()->create($validator->validated());
         return new MenuResource($menu);
     }
@@ -50,13 +45,9 @@ class MenuController extends Controller
             return response()->json($validator->errors(), 400);
         }
         $restaurant = Restaurant::find($rest_id);
-        if ($restaurant == null) {
-            return response()->json(["message" => "can't find this restaurant"], 400);
-        }
+
         $menu = $restaurant->menus()->where("id", "=", $menu_id)->first();
-        if ($menu->restaurant_id != $restaurant->id) {
-            return response()->json(["message" => "this menu doesn't belong to this restaurant"], 400);
-        }
+
         $menu->update($validator->validated());
         return MenuResource::make($menu);
     }
@@ -65,9 +56,7 @@ class MenuController extends Controller
     {
 
         $restaurant = Restaurant::find($rest_id);
-        if ($restaurant == null) {
-            return response()->json(["message" => "can't find this restaurant"], 400);
-        }
+
         $menu = $restaurant->menus()->where("id", "=", $menu_id)->first();
         if ($menu->restaurant_id != $restaurant->id) {
             return response()->json(["message" => "this menu doesn't belong to this restaurant"], 400);

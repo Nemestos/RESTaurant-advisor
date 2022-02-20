@@ -29,13 +29,13 @@ Route::group([
     Route::get("/users", [UsersController::class, "index"])->middleware(["ability:get_users"]);
     Route::get("/restaurants", [RestaurantController::class, "index"])->middleware(["ability:get_restaurants"]);
     Route::post("/restaurant", [RestaurantController::class, "create"])->middleware(["ability:create_restaurant"]);
-    Route::put("/restaurant/{id}", [RestaurantController::class, "update"])->middleware(["ability:put_restaurant"]);
-    Route::delete("/restaurant/{id}", [RestaurantController::class, "delete"])->middleware(["ability:delete_restaurant"]);
+    Route::put("/restaurant/{id}", [RestaurantController::class, "update"])->middleware(["ability:put_restaurant", "menu-rest"]);
+    Route::delete("/restaurant/{id}", [RestaurantController::class, "delete"])->middleware(["ability:delete_restaurant", "menu-rest"]);
 
-    Route::get("/restaurant/{id}/menus", [MenuController::class, "index"])->middleware("ability:get_menus");
-    Route::post("/restaurant/{id}/menu", [MenuController::class, "create"])->middleware("ability:create_menu");
-    Route::put("/restaurant/{rest_id}/menu/{menu_id}", [MenuController::class, "update"])->middleware("ability:put_menu");
-    Route::delete("/restaurant/{rest_id}/menu/{menu_id}", [MenuController::class, "delete"])->middleware("ability:delete_menu");
+    Route::get("/restaurant/{id}/menus", [MenuController::class, "index"])->middleware(["ability:get_menus", "menu-rest"]);
+    Route::post("/restaurant/{id}/menu", [MenuController::class, "create"])->middleware(["ability:create_menu", "menu-rest"]);
+    Route::put("/restaurant/{rest_id}/menu/{menu_id}", [MenuController::class, "update"])->middleware(["ability:put_menu", "menu-rest"]);
+    Route::delete("/restaurant/{rest_id}/menu/{menu_id}", [MenuController::class, "delete"])->middleware(["ability:delete_menu", "menu-rest"]);
 
 });
 
