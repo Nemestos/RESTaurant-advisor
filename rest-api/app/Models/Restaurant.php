@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
     use HasFactory;
-    protected $fillable =[
+
+    protected $fillable = [
         'name',
         'description',
         'grade',
@@ -17,5 +18,11 @@ class Restaurant extends Model
         'website',
         'hours'
     ];
-    protected $collection="restaurants";
+
+    public function menus()
+    {
+        return $this->hasMany(Menu::class,"restaurant_id");
+    }
+
+    protected $collection = "restaurants";
 }

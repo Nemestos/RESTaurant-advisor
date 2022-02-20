@@ -123,6 +123,7 @@ class AuthTest extends TestCase
             ])
             ->assertStatus(200)
             ->assertJsonStructure(Token::STRUCTURE);
+        $this->assertAuthenticated("web");
     }
 
     /**
@@ -141,8 +142,6 @@ class AuthTest extends TestCase
 
         ])->assertStatus(400);
     }
-
-
 
 
 }

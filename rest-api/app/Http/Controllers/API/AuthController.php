@@ -14,11 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-//    public function index(Request $request)
-//    {
-//
-//        return UserResource::collection(User::all());
-//    }
+
 
     /**
      * @throws \Illuminate\Validation\ValidationException

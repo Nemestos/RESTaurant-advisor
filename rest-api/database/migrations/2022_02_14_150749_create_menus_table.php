@@ -17,6 +17,9 @@ class CreateMenusTable extends Migration
             $table->id();
             $table->string("name");
             $table->longText("description");
+            $table->foreignId("restaurant_id")
+                ->constrained("restaurants")
+                ->onDelete("cascade");
             $table->float("price");
             $table->timestamps();
         });

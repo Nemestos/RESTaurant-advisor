@@ -11,9 +11,10 @@ use Illuminate\Testing\Fluent\AssertableJson;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
-class RestaurantTest extends TestCase
+class   RestaurantTest extends TestCase
 {
     use RefreshDatabase;
+
     /**
      *
      * /restaurant
@@ -77,4 +78,57 @@ class RestaurantTest extends TestCase
 
 
     }
+
+    /**
+     * @depends test_if_we_can_create_restaurant_when_admin
+     * /restaurant/{id}
+     * @return void
+     */
+    public function test_if_we_cant_delete_one_restaurant_when_user()
+    {
+        $restaurant = Restaurant::factory()->createOne();
+        $user = User::factory()->makeOne();
+        Sanctum::actingAs($user, Token::USER_ABILITIES);
+        $resp = $this->json('DELETE', 'api/restaurant/' . strval($restaurant->id));
+        $resp->assertStatus(400);
+        $this->assertDatabaseHas("restaurants", [
+            "id" => $restaurant->id
+        ]);
+    }
+
+    /**
+     * @depends test_if_we_can_create_restaurant_when_admin
+     * /restaurant/{id}
+     * @return void
+     */
+    public function test_if_we_can_delete_one_restaurant_when_admin()
+    {
+        $restaurant = Restaurant::factory()->createOne();
+        $user = User::factory()->makeOne();
+        Sanctum::actingAs($user, Token::ADMIN_ABILITIES);
+        $resp = $this->json('DELETE', 'api/restaurant/' . strval($restaurant->id));
+        $resp->assertStatus(200);
+        $this->assertDatabaseMissing("restaurants", [
+            "id" => $restaurant->id
+        ]);
+    }
+
+    /**
+     * @depends test_if_we_can_create_restaurant_when_admin
+     * /restaurant/{id}
+     * @return void
+     */
+    public function test_if_we_can_update_one_or_many_fields_of_a_restaurant_when_admin()
+    {
+        $restaurant = Restaurant::factory()->createOne();
+        $user = User::factory()->makeOne();
+        Sanctum::actingAs($user, Token::ADMIN_ABILITIES);
+        $resp = $this->json('PUT', 'api/restaurant/'.strval($restaurant->id),["name"=>"who are you","description"=>"mais"]);
+        $resp->assertStatus(200);
+        $this->assertDatabaseHas("restaurants", [
+            "name" => "who are you",
+            "description"=>"mais"
+        ]);
+    }
+
 }

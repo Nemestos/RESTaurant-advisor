@@ -8,10 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         "name",
         "description",
         "price"
     ];
+
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
+
     protected $collection = "menus";
 }

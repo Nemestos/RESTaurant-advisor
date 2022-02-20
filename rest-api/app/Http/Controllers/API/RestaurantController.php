@@ -27,7 +27,34 @@ class RestaurantController extends Controller
         $restaurant =Restaurant::create($validator->validated());
         return response()->json(["data"=>$restaurant->getAttributes()],201);
     }
+    public function update(Request $request,$id){
+        $validator = Validator::make($request->all(), [
+            "name" => "string|unique:restaurants",
+            "description" => "string",
+            "grade" => "numeric|between:0.0,5.0",
+            "localization" => "string|max:255",
+            "phone_number" => "regex:/\+\d{2}\d{9}/",
+            "website" => "url",
+            "hours" => "string"
+        ]);
+        if($validator->fails()){
+            return response()->json($validator->errors(),400);
+        }
+        $restaurant = Restaurant::find($id);
+        if ($restaurant == null){
+            return response()->json(["message"=>"the restaurant".strval($id)."doesn't exit"]);
+        }
+        $restaurant->update($validator->validated());
+        return RestaurantResource::make($restaurant);
+    }
+    public function delete(Request $request,$id){
+        $restaurant = Restaurant::find($id);
+        if ($restaurant == null){
+            return response()->json(["message"=>"the restaurant".strval($id)."doesn't exit"]);
+        }
+        $restaurant->delete();
 
+    }
     public function index(Request $request)
     {
         return RestaurantResource::collection(Restaurant::all());
