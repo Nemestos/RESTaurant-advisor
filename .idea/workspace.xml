@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6aeef322-8f77-4055-a392-878c8b09220c" name="Changes" comment="[MOD]refacto checking wiht CheckMenuRestaurant middleware">
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/rest-api/composer.json</pharConfigPath>
+    <execution>
+      <executable path="composer" />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/rest-api/config/app.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/docker/docker-compose.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/tests/Feature/AuthTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/Menu.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/database/migrations/2022_02_14_150749_create_menus_table.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/tests/Feature/RestaurantTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/config/auth.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/docker/php/Dockerfile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Providers/AppServiceProvider.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/routes/api.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/.env.example" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Providers/AuthServiceProvider.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/composer.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/docker/.env" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/.env" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/User.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/database/migrations/2022_02_14_142046_create_users_table.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/Restaurant.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/database/migrations/2022_02_14_145152_create_restaurants_table.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/tests/Feature/UsersTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Http/Controllers/API/AuthController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/docker/.env.default" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/rest-api/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/fruitcake/laravel-cors" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/laravel/sanctum" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/laravel/serializable-closure" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/laravel/sail" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/dflydev/dot-access-data" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/league/config" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/facade/flare-client-php" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/facade/ignition" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/facade/ignition-contracts" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/nette/schema" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/asm89/stack-cors" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/composer" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/rest-api/vendor/jzonta/faker-restaurant" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="255skjTlevoWabUGAIdMLDdSDre" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rest-api/tests/Unit" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docker/nginx/conf.d" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6aeef322-8f77-4055-a392-878c8b09220c" name="Changes" comment="" />
+      <created>1644828426415</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1644828426415</updated>
+      <workItem from="1644828427503" duration="1177000" />
+      <workItem from="1644830249678" duration="15507000" />
+      <workItem from="1644876814453" duration="5439000" />
+      <workItem from="1644912528626" duration="13707000" />
+      <workItem from="1644951624214" duration="219000" />
+      <workItem from="1644963473410" duration="62000" />
+      <workItem from="1644963742132" duration="55000" />
+      <workItem from="1645004639278" duration="496000" />
+      <workItem from="1645094611152" duration="624000" />
+      <workItem from="1645100987116" duration="1317000" />
+      <workItem from="1645103207803" duration="9090000" />
+      <workItem from="1645114245802" duration="100000" />
+      <workItem from="1645228390922" duration="8542000" />
+      <workItem from="1645303961617" duration="2011000" />
+      <workItem from="1645361219237" duration="7225000" />
+      <workItem from="1645430954883" duration="107000" />
+      <workItem from="1645431063388" duration="756000" />
+      <workItem from="1645450203842" duration="184000" />
+    </task>
+    <task id="LOCAL-00001" summary="[ADD]begin docker archi">
+      <created>1644833699059</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1644833699059</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[ADD]adding mongodb for docker">
+      <created>1644835384693</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1644835384693</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[ADD]making models, migrations">
+      <created>1644851442040</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1644851442040</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[ADD]auth and register work with jwt">
+      <created>1644916693068</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1644916693069</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[ADD]begin roles for user and adding middleware for jwt">
+      <created>1644951869797</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1644951869797</updated>
+    </task>
+    <task id="LOCAL-00006" summary="[ADD]update for postgres">
+      <created>1645114334940</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1645114334940</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[ADD]finish routes and adding associating tests">
+      <created>1645368234745</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1645368234745</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[MOD]adding somes test for more security">
+      <created>1645368980173</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1645368980173</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[MOD]refacto checking wiht CheckMenuRestaurant middleware">
+      <created>1645372289319</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1645372289319</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[ADD]begin docker archi" />
+    <MESSAGE value="[ADD]adding mongodb for docker" />
+    <MESSAGE value="[ADD]making models, migrations" />
+    <MESSAGE value="[ADD]auth and register work with jwt" />
+    <MESSAGE value="[ADD]begin roles for user and adding middleware for jwt" />
+    <MESSAGE value="[ADD]update for postgres" />
+    <MESSAGE value="[ADD]finish routes and adding associating tests" />
+    <MESSAGE value="[MOD]adding somes test for more security" />
+    <MESSAGE value="[MOD]refacto checking wiht CheckMenuRestaurant middleware" />
+    <option name="LAST_COMMIT_MESSAGE" value="[MOD]refacto checking wiht CheckMenuRestaurant middleware" />
+  </component>
+</project>
