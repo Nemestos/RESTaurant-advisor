@@ -9,16 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FourMetal">
 
-        <activity
-            android:name=".DisplayMessageActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity">
 
-            </meta-data>
-        </activity>
 
         <activity
             android:name=".MainActivity"
