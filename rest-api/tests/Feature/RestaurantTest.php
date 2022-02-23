@@ -168,10 +168,6 @@ class   RestaurantTest extends TestCase
         Sanctum::actingAs($user, Token::ADMIN_ABILITIES);
         $resp = $this->json('PUT', 'api/restaurant/42', ["name" => "who are you", "description" => "mais"]);
         $resp->assertStatus(400);
-//        $this->assertDatabaseHas("restaurants", [
-//            "name" => "who are you",
-//            "description" => "mais"
-//        ]);
     }
 
 

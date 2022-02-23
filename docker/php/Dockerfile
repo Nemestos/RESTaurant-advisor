@@ -24,6 +24,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends --no-install-su
     zip \
     pdo \
     pdo_pgsql\
+  && pecl install xdebug \
+  && docker-php-ext-enable xdebug\
   && rm -rf /tmp/* /var/lib/apt/lists/*
 
 

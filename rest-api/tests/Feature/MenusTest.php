@@ -53,7 +53,7 @@ class MenusTest extends TestCase
         Sanctum::actingAs($user, Token::USER_ABILITIES);
         $resp = $this->json("GET", $uri, ['Accept' => 'application/json']);
         $resp->assertStatus(200);
-//        dd($resp->json());
+
         $resp->assertJsonStructure([
             "data" => [
                 "*" => [
