@@ -1,10 +1,9 @@
 package com.tah.fourmetal
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.EditText
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 const val EXTRA_MESSAGE = "com.tah.fourmetal.MESSAGE"
 
@@ -12,14 +11,24 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
-
-    fun sendMessage(view: View) {
-        val editText = findViewById<EditText>(R.id.editTextTextPersonName)
-        val msg = editText.text.toString();
-        val intent = Intent(this, DisplayMessageActivity::class.java).apply {
-            putExtra(EXTRA_MESSAGE, msg);
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView);
+        val restaurantsFragment = RestaurantsFragment();
+        val loginFragment = LoginFragment();
+        val registerFragment = RegisterFragment();
+        setCurrentFragment(restaurantsFragment)
+        bottomNavigationView.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.restaurant->setCurrentFragment(restaurantsFragment)
+                R.id.login->setCurrentFragment(loginFragment)
+                R.id.register->setCurrentFragment(registerFragment)
+            }
+            true
         }
-        startActivity(intent);
     }
+    private fun setCurrentFragment(fragment:Fragment)=
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment,fragment)
+            commit()
+        }
+
 }

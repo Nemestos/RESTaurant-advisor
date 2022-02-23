@@ -2,8 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aeef322-8f77-4055-a392-878c8b09220c" name="Changes" comment="[MOD]refacto checking wiht CheckMenuRestaurant middleware">
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/BottomNavActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/BottomNavContentScreens.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/BottomNavItem.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/BottomNavigation.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/res/drawable/ic_restaurant.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/DisplayMessageActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/gradle.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +236,8 @@
       <workItem from="1645361219237" duration="7225000" />
       <workItem from="1645430954883" duration="107000" />
       <workItem from="1645431063388" duration="756000" />
-      <workItem from="1645450203842" duration="184000" />
+      <workItem from="1645450203842" duration="1068000" />
+      <workItem from="1645539242293" duration="5663000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD]begin docker archi">
       <created>1644833699059</created>
