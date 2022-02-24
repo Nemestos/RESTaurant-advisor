@@ -28,18 +28,18 @@ fun RestaurantListScreen(rvm: RestaurantViewModel) {
                         Text("Restaurants")
                     }
                 })
-        },
-        content = {
-            if (rvm.errorMsg.isEmpty()) {
-
-                RestaurantList(rvm.restaurantList, isRefreshing, { rvm.refreshRestaurantList() })
-
-
-            } else {
-                Text(text = rvm.errorMsg)
-
-            }
         }
-    )
+    ) {
+        if (rvm.errorMsg.isEmpty() && !rvm.restaurantList.isEmpty()) {
+
+            RestaurantList(rvm.restaurantList, isRefreshing) { rvm.refreshRestaurantList() }
+
+
+        } else {
+
+            RestaurantEmptyList()
+
+        }
+    }
 }
 

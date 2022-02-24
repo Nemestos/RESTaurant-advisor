@@ -26,7 +26,6 @@ fun RestaurantList(
         SwipeRefresh(state = rememberSwipeRefreshState(isRefreshing), onRefresh) {
             LazyColumn(modifier = Modifier.fillMaxHeight()) {
                 itemsIndexed(restaurantList) { index, rest ->
-
                     RestaurantListItem(rest)
                     if (index < length - 2) {
                         Divider()

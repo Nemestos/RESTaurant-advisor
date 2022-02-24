@@ -43,8 +43,7 @@ class RestaurantViewModel : ViewModel() {
             }
         }
     }
-
-    fun refreshRestaurantList() {
+    fun refreshRestaurantList(){
         viewModelScope.launch {
             _isRefreshing.emit(true)
             getRestaurantList()
