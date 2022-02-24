@@ -3,7 +3,6 @@ package com.tah.fourmetal
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -17,9 +16,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
@@ -38,7 +35,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.compose.rememberNavController
 import com.tah.fourmetal.ui.navigation.BottomNavigation
 import com.tah.fourmetal.ui.navigation.NavigationGraph
-import com.tah.fourmetal.ui.restaurant.RestaurantList
+import com.tah.fourmetal.ui.restaurant.RestaurantListScreen
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 
 const val EXTRA_MESSAGE = "com.tah.fourmetal.MESSAGE"
@@ -54,11 +51,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MaterialTheme {
-                RestaurantList(rvm = RestaurantViewModel())
-            }
-//            MainScreenContent()
-//            MyScreenContent()
+
+            MainScreenContent()
+
         }
     }
 }

@@ -14,25 +14,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.tah.fourmetal.R
+import com.tah.fourmetal.ui.restaurant.RestaurantListScreen
+import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 
 @Composable
 fun RestaurantsScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(colorResource(id = R.color.teal_700))
-            .wrapContentSize(Alignment.Center)
-
-    ) {
-        Text(
-            text = "Restaurants",
-            fontWeight = FontWeight.Bold,
-            color = Color.White,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 20.sp
-        )
-    }
+    RestaurantListScreen(rvm = RestaurantViewModel())
 }
 
 @Composable

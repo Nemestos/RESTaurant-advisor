@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6aeef322-8f77-4055-a392-878c8b09220c" name="Changes" comment="[ADD]add jetpack and start navigation">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/.env.default" beforeDir="false" afterPath="$PROJECT_DIR$/docker/.env.default" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest-api/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/rest-api/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest-api/database/factories/RestaurantFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest-api/database/factories/RestaurantFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest-api/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest-api/database/seeders/DatabaseSeeder.php" afterDir="false" />
-    </list>
+    <list default="true" id="6aeef322-8f77-4055-a392-878c8b09220c" name="Changes" comment="[ADD]adding seeders" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -229,7 +222,7 @@
       <workItem from="1645715718282" duration="1198000" />
       <workItem from="1645727814086" duration="310000" />
       <workItem from="1645728136052" duration="483000" />
-      <workItem from="1645728950006" duration="2107000" />
+      <workItem from="1645728950006" duration="2226000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD]begin docker archi">
       <created>1644833699059</created>
@@ -301,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645613646597</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="[ADD]adding seeders">
+      <created>1645731069088</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1645731069088</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,6 +329,7 @@
     <MESSAGE value="[MOD]adding somes test for more security" />
     <MESSAGE value="[MOD]refacto checking wiht CheckMenuRestaurant middleware" />
     <MESSAGE value="[ADD]add jetpack and start navigation" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ADD]add jetpack and start navigation" />
+    <MESSAGE value="[ADD]adding seeders" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADD]adding seeders" />
   </component>
 </project>
