@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/auth', [AuthController::class, 'auth'])->name("login");
+Route::get("/restaurants", [RestaurantController::class, "index"]);
 
 Route::group([
     "middleware" => ["auth:sanctum"],
 ], function () {
     Route::get("/users", [UsersController::class, "index"])->middleware(["ability:get_users"]);
-    Route::get("/restaurants", [RestaurantController::class, "index"])->middleware(["ability:get_restaurants"]);
     Route::post("/restaurant", [RestaurantController::class, "create"])->middleware(["ability:create_restaurant"]);
     Route::put("/restaurant/{id}", [RestaurantController::class, "update"])->middleware(["ability:put_restaurant", "menu-rest"]);
     Route::delete("/restaurant/{id}", [RestaurantController::class, "delete"])->middleware(["ability:delete_restaurant", "menu-rest"]);

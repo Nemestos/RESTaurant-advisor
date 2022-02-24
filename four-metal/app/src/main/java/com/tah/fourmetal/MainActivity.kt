@@ -1,6 +1,7 @@
 package com.tah.fourmetal
 
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.animateColorAsState
@@ -32,58 +33,86 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
+import androidx.lifecycle.ViewModel
+import androidx.navigation.compose.rememberNavController
+import com.tah.fourmetal.ui.navigation.BottomNavigation
+import com.tah.fourmetal.ui.navigation.NavigationGraph
+import com.tah.fourmetal.ui.restaurant.RestaurantList
+import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 
 const val EXTRA_MESSAGE = "com.tah.fourmetal.MESSAGE"
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
+class TodoViewModel() : ViewModel() {
+    var todoList = mutableStateListOf<String>()
+    var currValue by mutableStateOf("")
 
-            MyScreenContent()
-        }
-    }
 
 }
 
-@Composable
-fun MyScreenContent() {
-
-    var todoList = remember {
-        mutableStateListOf<String>()
-    }
-    var inputValue by remember {
-        mutableStateOf("")
-    }
-    Column {
-        TodoAdder(
-            currValue = inputValue,
-            onAdd = { todoList.add(inputValue) },
-            onValueChange = { inputValue = it }
-        )
-        Spacer(modifier = Modifier.height(1.dp))
-        TodoList(todoList = todoList, onRemove = { todoList.remove(it) })
-        if (todoList.size > 0) {
-
-            ClearAll(list = todoList)
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MaterialTheme {
+                RestaurantList(rvm = RestaurantViewModel())
+            }
+//            MainScreenContent()
+//            MyScreenContent()
         }
     }
+}
 
+@Composable
+fun MainScreenContent() {
+    val navController = rememberNavController()
+    Scaffold(
+        bottomBar = { BottomNavigation(navController = navController) },
+    ) {
+        NavigationGraph(navController = navController)
+    }
+}
+
+@Composable
+fun TodoScreenContent(todoViewModel: TodoViewModel = TodoViewModel()) {
+    Column {
+        TodoAdder(
+            currValue = todoViewModel.currValue,
+            onAdd = { todoViewModel.todoList.add(todoViewModel.currValue) },
+            onValueChange = { todoViewModel.currValue = it }
+        )
+        if (todoViewModel.todoList.size > 0) {
+            Spacer(modifier = Modifier.height(1.dp))
+            ClearAll(list = todoViewModel.todoList)
+        }
+        Spacer(modifier = Modifier.height(1.dp))
+        TodoList(
+            todoList = todoViewModel.todoList,
+            onRemove = { todoViewModel.todoList.remove(it) })
+
+    }
 
 }
 
 @Composable
 fun ClearAll(list: SnapshotStateList<String>) {
-    Row(modifier = Modifier.fillMaxWidth()) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+    ) {
         Button(
             modifier = Modifier
                 .padding(all = 5.dp)
                 .fillMaxWidth()
-                .height(3.dp)
-                .background(Color.Red),
+                .weight(100f)
+                .height(60.dp),
             onClick = { list.clear() }
         ) {
-            Text(text = "Clear all", textAlign = TextAlign.Center)
+            Text(
+                text = "Clear all",
+                textAlign = TextAlign.Center,
+            )
         }
     }
 }
