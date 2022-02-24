@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aeef322-8f77-4055-a392-878c8b09220c" name="Changes" comment="[ADD]add jetpack and start navigation">
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/RestaurantResp.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/RestaurantService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/models/Menu.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/models/Restaurant.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/models/User.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/restaurant/RestaurantList.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/viewmodels/RestaurantViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest-api/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest-api/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/.env.default" beforeDir="false" afterPath="$PROJECT_DIR$/docker/.env.default" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest-api/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/rest-api/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest-api/database/factories/RestaurantFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest-api/database/factories/RestaurantFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest-api/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest-api/database/seeders/DatabaseSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,30 +32,28 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/rest-api/config/app.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/docker/docker-compose.yml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rest-api/tests/Feature/AuthTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/Menu.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/database/migrations/2022_02_14_150749_create_menus_table.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/.env.example" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/composer.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rest-api/tests/Feature/RestaurantTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/tests/Feature/UsersTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/config/app.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Http/Controllers/API/AuthController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/docker/docker-compose.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/Restaurant.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/User.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/Menu.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rest-api/config/auth.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/docker/php/Dockerfile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/database/migrations/2022_02_14_150749_create_menus_table.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rest-api/app/Providers/AppServiceProvider.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rest-api/routes/api.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/.env.example" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/app/Providers/AuthServiceProvider.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/composer.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/docker/.env" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/.env" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/User.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/database/migrations/2022_02_14_142046_create_users_table.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/Restaurant.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rest-api/database/migrations/2022_02_14_145152_create_restaurants_table.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/tests/Feature/UsersTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/app/Http/Controllers/API/AuthController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/database/migrations/2022_02_14_142046_create_users_table.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/docker/.env.default" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Providers/AuthServiceProvider.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/docker/php/Dockerfile" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -237,6 +227,9 @@
       <workItem from="1645539242293" duration="6542000" />
       <workItem from="1645706706460" duration="144000" />
       <workItem from="1645715718282" duration="1198000" />
+      <workItem from="1645727814086" duration="310000" />
+      <workItem from="1645728136052" duration="483000" />
+      <workItem from="1645728950006" duration="2107000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD]begin docker archi">
       <created>1644833699059</created>
