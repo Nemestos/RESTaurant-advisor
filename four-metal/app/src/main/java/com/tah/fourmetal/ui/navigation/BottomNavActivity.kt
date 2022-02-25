@@ -4,6 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.tah.fourmetal.ui.login.LoginScreen
+import com.tah.fourmetal.ui.register.RegisterScreen
+import com.tah.fourmetal.ui.restaurant.RestaurantListScreen
+import com.tah.fourmetal.ui.restaurant.RestaurantsScreen
+import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {

@@ -1,4 +1,4 @@
-package com.tah.fourmetal.data.api
+package com.tah.fourmetal.data.api.restaurants
 
 import com.tah.fourmetal.data.models.Restaurant
 

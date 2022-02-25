@@ -19,6 +19,7 @@ fun RestaurantListScreen(rvm: RestaurantViewModel) {
     val isRefreshing by rvm.isRefreshing.collectAsState()
     LaunchedEffect(Unit, block = {
         rvm.getRestaurantList()
+
     })
     Scaffold(
         topBar = {
@@ -36,7 +37,7 @@ fun RestaurantListScreen(rvm: RestaurantViewModel) {
 
 
         } else {
-
+            Log.d("error:",rvm.errorMsg)
             RestaurantEmptyList()
 
         }
