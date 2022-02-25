@@ -15,9 +15,10 @@ import com.tah.fourmetal.ui.form.Field
 import com.tah.fourmetal.ui.form.Form
 import com.tah.fourmetal.ui.form.FormState
 import com.tah.fourmetal.ui.form.Validator
+import com.tah.fourmetal.ui.viewmodels.AuthViewModel
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(avm: AuthViewModel = AuthViewModel()) {
     val context = LocalContext.current
 
     val state by remember {
@@ -53,6 +54,11 @@ fun RegisterScreen() {
                 Field(
                     name = "firstname",
                     label = "Firstname:",
+                    validators = listOf(Validator.Required())
+                ),
+                Field(
+                    name = "age",
+                    label = "Age:",
                     keyboardType = KeyboardType.Number,
                     validators = listOf(Validator.Required())
                 )
@@ -60,7 +66,15 @@ fun RegisterScreen() {
         )
         Button(onClick = {
             if (state.validate()) {
-                Toast.makeText(context, "our work", Toast.LENGTH_SHORT).show()
+                val infos = state.getData();
+                avm.register(
+                    infos["login"].orEmpty(),
+                    infos["password"].orEmpty(),
+                    infos["email"].orEmpty(),
+                    infos["name"].orEmpty(),
+                    infos["firstname"].orEmpty(),
+                    infos["age"].orEmpty().toInt()
+                )
             }
         }) {
             Text("Submit")

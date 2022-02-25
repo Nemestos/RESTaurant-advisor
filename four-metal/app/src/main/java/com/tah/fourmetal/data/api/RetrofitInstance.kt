@@ -1,5 +1,6 @@
 package com.tah.fourmetal.data.api
 
+import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
@@ -28,6 +29,7 @@ interface RetrofitInstance {
                 .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(NetworkResponseAdapterFactory())
                 .build()
         }
 

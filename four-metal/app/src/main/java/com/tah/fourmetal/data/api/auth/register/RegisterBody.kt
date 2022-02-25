@@ -1,4 +1,4 @@
-package com.tah.fourmetal.data.api.auth
+package com.tah.fourmetal.data.api.auth.register
 
 data class RegisterBody(
     var login: String,

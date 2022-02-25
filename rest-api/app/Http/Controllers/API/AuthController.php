@@ -33,7 +33,7 @@ class AuthController extends Controller
             throw new AuthenticationException("can't login with this credentials");
         }
         $token = User::refreshToken(auth()->user())->plainTextToken;
-        return response()->json(User::formNewToken($token), 200);
+        return response()->json(["token" => $token], 200);
 
     }
 
@@ -51,12 +51,12 @@ class AuthController extends Controller
             'age' => 'required|integer|min:1'
         ]);
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+            return response()->json(["errors"=>$validator->errors()->all()], 400);
         }
         $validated = $validator->validated();
 
         list($user, $token) = User::createNormalUser($validated);
-        return response()->json(User::formNewToken($token->plainTextToken), 201);
+        return response()->json(["token" => $token->plainTextToken], 201);
 
     }
 
