@@ -2,14 +2,17 @@ package com.tah.fourmetal.ui.navigation
 
 import android.util.Log
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.compositionLocalOf
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.tah.fourmetal.ui.login.LoginScreen
 import com.tah.fourmetal.ui.register.RegisterScreen
 import com.tah.fourmetal.ui.restaurant.RestaurantListScreen
 import com.tah.fourmetal.ui.restaurant.RestaurantsScreen
+import com.tah.fourmetal.ui.restaurant.ShowRestaurantContent
 import com.tah.fourmetal.ui.viewmodels.AuthViewModel
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 import kotlinx.coroutines.flow.onEmpty
@@ -21,6 +24,12 @@ fun NavigationGraph(navController: NavHostController) {
         composable(BottomNavItem.Restaurants.screen_route) {
             RestaurantsScreen()
         }
+        composable(
+            NavItem.RestaurantDetail.screen_route,
+            arguments = NavItem.RestaurantDetail.arguments
+        ) {
+            ShowRestaurantContent(it.arguments?.getInt("id"))
+        }
         composable(BottomNavItem.Login.screen_route) {
             LoginScreen()
         }
@@ -31,4 +40,8 @@ fun NavigationGraph(navController: NavHostController) {
     }
 
 
+}
+
+val LocalNavController = compositionLocalOf<NavHostController> {
+    error("no local nav controller provided")
 }

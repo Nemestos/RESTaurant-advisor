@@ -37,11 +37,9 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.tah.fourmetal.ui.navigation.BottomNavItem
-import com.tah.fourmetal.ui.navigation.BottomNavigation
-import com.tah.fourmetal.ui.navigation.NavigationGraph
-import com.tah.fourmetal.ui.navigation.TopBarNavigation
+import com.tah.fourmetal.ui.navigation.*
 import com.tah.fourmetal.ui.restaurant.RestaurantListScreen
 import com.tah.fourmetal.ui.viewmodels.AuthViewModel
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
@@ -54,18 +52,22 @@ import javax.inject.Inject
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
-            MainScreenContent()
+            CompositionLocalProvider(LocalNavController provides rememberNavController()) {
+
+                MainScreenContent()
+            }
         }
     }
 }
 
 @Composable
 fun MainScreenContent() {
-    val navController = rememberNavController()
+
     val authViewModel = getViewModel<AuthViewModel>()
     val authUser by authViewModel.sessionManager.currentUserFlow.collectAsState(initial = null)
-
+    val navController = LocalNavController.current
     val items = when (authUser) {
         null -> listOf<BottomNavItem>(
             BottomNavItem.Restaurants,

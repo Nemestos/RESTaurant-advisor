@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/auth', [AuthController::class, 'auth'])->name("login");
 Route::get("/restaurants", [RestaurantController::class, "index"]);
+Route::get("/restaurant/{id}/menus", [MenuController::class, "index"])->middleware(["menu-rest"]);
 
 Route::group([
     "middleware" => ["auth:sanctum"],
@@ -29,7 +30,6 @@ Route::group([
     Route::put("/restaurant/{id}", [RestaurantController::class, "update"])->middleware(["ability:put_restaurant", "menu-rest"]);
     Route::delete("/restaurant/{id}", [RestaurantController::class, "delete"])->middleware(["ability:delete_restaurant", "menu-rest"]);
 
-    Route::get("/restaurant/{id}/menus", [MenuController::class, "index"])->middleware(["ability:get_menus", "menu-rest"]);
     Route::post("/restaurant/{id}/menu", [MenuController::class, "create"])->middleware(["ability:create_menu", "menu-rest"]);
     Route::put("/restaurant/{rest_id}/menu/{menu_id}", [MenuController::class, "update"])->middleware(["ability:put_menu", "menu-rest"]);
     Route::delete("/restaurant/{rest_id}/menu/{menu_id}", [MenuController::class, "delete"])->middleware(["ability:delete_menu", "menu-rest"]);

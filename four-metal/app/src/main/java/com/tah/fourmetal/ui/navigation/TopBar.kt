@@ -10,6 +10,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Logout
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -26,29 +27,17 @@ fun TopBarNavigation(name: String) {
     val avm = getViewModel<AuthViewModel>()
     val currUser = avm.sessionManager.currentUserFlow.collectAsState(initial = null)
     val context = LocalContext.current
-
-    TopAppBar() {
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-
-            Text(text = name)
-            if (currUser.value != null) {
-                LogoutBtn(onClick = {
-                    Toast.makeText(
-                        context,
-                        "Logout",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    avm.logout()
-                })
-
-
+    val navController = LocalNavController.current
+    TopAppBar(
+        title = { Text(text = name) },
+        navigationIcon = {
+            if (navController.previousBackStackEntry != null) {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
+                }
             }
         }
-    }
+    )
 
 }
 
