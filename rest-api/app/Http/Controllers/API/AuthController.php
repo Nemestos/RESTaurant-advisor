@@ -32,8 +32,9 @@ class AuthController extends Controller
         if (!Auth::attempt($validated)) {
             throw new AuthenticationException("can't login with this credentials");
         }
-        $token = User::refreshToken(auth()->user())->plainTextToken;
-        return response()->json(["token" => $token], 200);
+        $last_abilities = User::getAbilities(auth()->user());
+        $token = User::refreshToken(auth()->user(), $last_abilities)->plainTextToken;
+        return response()->json(["token" => $token, "user_id" => auth()->user()->id], 200);
 
     }
 
@@ -51,12 +52,12 @@ class AuthController extends Controller
             'age' => 'required|integer|min:1'
         ]);
         if ($validator->fails()) {
-            return response()->json(["errors"=>$validator->errors()->all()], 400);
+            return response()->json(["errors" => $validator->errors()->all()], 400);
         }
         $validated = $validator->validated();
 
         list($user, $token) = User::createNormalUser($validated);
-        return response()->json(["token" => $token->plainTextToken], 201);
+        return response()->json(["token" => $token, "user_id" => $user->id], 201);
 
     }
 
