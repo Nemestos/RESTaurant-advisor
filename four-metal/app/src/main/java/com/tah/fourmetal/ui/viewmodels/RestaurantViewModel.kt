@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.haroldadmin.cnradapter.NetworkResponse
 import com.tah.fourmetal.data.api.restaurants.RestaurantResp
 import com.tah.fourmetal.data.api.restaurants.RestaurantService
 import com.tah.fourmetal.data.api.RetrofitInstance
@@ -24,23 +25,27 @@ class RestaurantViewModel : ViewModel() {
     val isRefreshing: StateFlow<Boolean>
         get() = _isRefreshing.asStateFlow()
 
-    fun getRestaurantList() {
-        viewModelScope.launch {
-            val retrofitInstance = RetrofitInstance.getInst().create(RestaurantService::class.java)
-            try {
-                restaurantList.clear()
-                val resp = retrofitInstance.getRestaurants()
-                val items: RestaurantResp? = resp.body()
-                Log.d("restaurants:", items.toString())
-                if (items != null) {
-                    restaurantList.addAll(items.data)
-                } else {
+    suspend fun getRestaurantList() {
+
+        val retrofitInstance = RetrofitInstance.getInst().create(RestaurantService::class.java)
+        when (val restaurants = retrofitInstance.getRestaurants()) {
+
+            is NetworkResponse.Success -> {
+                Log.d("restaurants:", restaurants.toString())
+                if (restaurants.body.data.isEmpty()) {
                     errorMsg = "Aucun restaurants"
+                } else {
+                    errorMsg = ""
+                    restaurantList.clear()
+                    restaurantList.addAll(restaurants.body.data)
                 }
-            } catch (e: Exception) {
-                errorMsg = e.message.toString()
             }
+            is NetworkResponse.Error -> {
+                errorMsg = "Erreur lors de la récupéraration des restaurants"
+            }
+
         }
+
     }
 
     fun refreshRestaurantList() {

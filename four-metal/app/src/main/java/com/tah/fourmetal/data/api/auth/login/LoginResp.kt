@@ -1,4 +1,9 @@
 package com.tah.fourmetal.data.api.auth.login
 
-data class LoginResp(val token:String)
-data class LoginErrorResp(val token:String)
+import com.tah.fourmetal.data.models.User
+
+data class LoginResp(val token: String?, val user_id: Int?)
+data class LoginErrorResp(
+    val message: String?,
+    val errors: List<String?>?
+)

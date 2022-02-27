@@ -9,18 +9,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.tah.fourmetal.ui.form.Field
 import com.tah.fourmetal.ui.form.Form
 import com.tah.fourmetal.ui.form.FormState
 import com.tah.fourmetal.ui.form.Validator
 import com.tah.fourmetal.ui.viewmodels.AuthViewModel
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun RegisterScreen(avm: AuthViewModel = AuthViewModel()) {
-    val context = LocalContext.current
+fun RegisterScreen() {
 
+    val avm = getViewModel<AuthViewModel>()
     val state by remember {
         mutableStateOf(FormState())
     }
@@ -64,6 +68,12 @@ fun RegisterScreen(avm: AuthViewModel = AuthViewModel()) {
                 )
             )
         )
+        if (!avm.errorMsg.isEmpty()) {
+            Text(text = avm.errorMsg, color = Color.Red)
+        }
+        if (!avm.successMsg.isEmpty()) {
+            Text(text = avm.successMsg, color = Color.Green)
+        }
         Button(onClick = {
             if (state.validate()) {
                 val infos = state.getData();

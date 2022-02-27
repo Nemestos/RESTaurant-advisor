@@ -13,7 +13,8 @@ class Field(
     val name: String,
     val label: String = "",
     val validators: List<Validator>,
-    val keyboardType: KeyboardType = KeyboardType.Text
+    val keyboardType: KeyboardType = KeyboardType.Text,
+    val autoComplete: Boolean = true
 ) {
     var text: String by mutableStateOf("")
     var lbl: String by mutableStateOf(label)
@@ -42,7 +43,10 @@ class Field(
             isError = hasAnyError,
             label = { Text(text = lbl) },
             modifier = Modifier.padding(),
-            keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = keyboardType,
+                autoCorrect = autoComplete
+            ),
             onValueChange = {
                 clearErr()
                 text = it
@@ -75,7 +79,6 @@ class Field(
                     true
 
                 }
-                else -> false
             }
         }.all { it }
     }

@@ -9,13 +9,8 @@ import java.io.InputStream
 import java.io.OutputStream
 
 
-data class User(
-    var id: Int,
-    var username: String = "",
-    var firstname: String = "",
-    var name: String = "",
-    var age: Int = 0
-
+data class AuthUser(
+    val token: String?,
+    val id: Int?
 )
-
 

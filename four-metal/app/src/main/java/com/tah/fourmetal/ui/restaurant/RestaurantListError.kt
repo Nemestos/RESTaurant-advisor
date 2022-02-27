@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun RestaurantEmptyList() {
+fun RestaurantListError(error: String) {
     Column(
         modifier = Modifier
             .padding(10.dp)
@@ -29,7 +29,7 @@ fun RestaurantEmptyList() {
 
 
         Text(
-            text = "No content",
+            text = error,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(16.dp),
             style = MaterialTheme.typography.h2,

@@ -2,18 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aeef322-8f77-4055-a392-878c8b09220c" name="Changes" comment="[ADD]update">
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/BaseAuthResp.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/login/LoginResp.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/androidTest/java/com/tah/fourmetal/BottomNavigationTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/CoreApplication.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/Modules.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/SessionManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/register/RegisterResp.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/models/AuthUser.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/TopBar.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/nginx/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker/nginx/nginx.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/four-metal/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/RetrofitInstance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/RetrofitInstance.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/androidTest/java/com/tah/fourmetal/ExampleInstrumentedTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/AuthService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/AuthService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/LoginBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/login/LoginBody.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/RegisterBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/register/RegisterBody.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/BaseAuthResp.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/login/LoginBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/login/LoginBody.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/login/LoginResp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/login/LoginResp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/restaurants/RestaurantResp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/restaurants/RestaurantResp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/restaurants/RestaurantService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/restaurants/RestaurantService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/models/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/models/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/form/Field.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/form/Field.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/login/LoginScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/login/LoginScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/BottomNavActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/BottomNavActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/BottomNavigation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/BottomNavigation.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/register/RegisterScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/register/RegisterScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/restaurant/RestaurantEmptyList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/restaurant/RestaurantListError.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/restaurant/RestaurantListScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/restaurant/RestaurantListScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/restaurant/RestaurantScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/restaurant/RestaurantScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/viewmodels/AuthViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/viewmodels/AuthViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest-api/app/Http/Controllers/API/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/rest-api/app/Http/Controllers/API/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/viewmodels/RestaurantViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/viewmodels/RestaurantViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/four-metal/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,28 +57,28 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/rest-api/config/app.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/docker/docker-compose.yml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rest-api/tests/Feature/AuthTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/Menu.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/database/migrations/2022_02_14_150749_create_menus_table.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/.env.example" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/composer.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rest-api/tests/Feature/RestaurantTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/tests/Feature/UsersTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/config/app.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Http/Controllers/API/AuthController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/docker/docker-compose.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/Restaurant.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/User.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/Menu.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rest-api/config/auth.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/docker/php/Dockerfile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/database/migrations/2022_02_14_150749_create_menus_table.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rest-api/app/Providers/AppServiceProvider.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rest-api/routes/api.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/.env.example" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/app/Providers/AuthServiceProvider.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/composer.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/User.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/database/migrations/2022_02_14_142046_create_users_table.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/app/Models/Restaurant.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rest-api/database/migrations/2022_02_14_145152_create_restaurants_table.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/tests/Feature/UsersTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/rest-api/app/Http/Controllers/API/AuthController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/database/migrations/2022_02_14_142046_create_users_table.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/docker/.env.default" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rest-api/app/Providers/AuthServiceProvider.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/docker/php/Dockerfile" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -241,6 +260,12 @@
       <workItem from="1645797885295" duration="245000" />
       <workItem from="1645798737671" duration="584000" />
       <workItem from="1645800435879" duration="1518000" />
+      <workItem from="1645806942718" duration="15000" />
+      <workItem from="1645809598159" duration="293000" />
+      <workItem from="1645820586286" duration="39000" />
+      <workItem from="1645894859148" duration="123000" />
+      <workItem from="1645964050523" duration="1955000" />
+      <workItem from="1645976034773" duration="684000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD]begin docker archi">
       <created>1644833699059</created>
@@ -331,6 +356,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="nginx.conf" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

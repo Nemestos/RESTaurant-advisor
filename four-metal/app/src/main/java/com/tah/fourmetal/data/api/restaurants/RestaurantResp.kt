@@ -5,3 +5,7 @@ import com.tah.fourmetal.data.models.Restaurant
 data class RestaurantResp(
     var data: List<Restaurant>
 )
+
+data class RestaurantErrorResp(
+    var message: String?
+)

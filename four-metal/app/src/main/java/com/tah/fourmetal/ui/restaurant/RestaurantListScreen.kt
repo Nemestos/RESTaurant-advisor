@@ -9,36 +9,30 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import com.google.accompanist.swiperefresh.SwipeRefresh
-import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
+import org.koin.androidx.compose.getViewModel
+import org.koin.core.context.GlobalContext.get
 
 
 @Composable
-fun RestaurantListScreen(rvm: RestaurantViewModel) {
+fun RestaurantListScreen() {
+    val rvm = getViewModel<RestaurantViewModel>()
     val isRefreshing by rvm.isRefreshing.collectAsState()
     LaunchedEffect(Unit, block = {
         rvm.getRestaurantList()
+        Log.d("restaurants:", rvm.errorMsg)
 
     })
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Row {
-                        Text("Restaurants")
-                    }
-                })
-        }
+
     ) {
-        if (rvm.errorMsg.isEmpty() && !rvm.restaurantList.isEmpty()) {
+        if (rvm.errorMsg.isEmpty()) {
 
             RestaurantList(rvm.restaurantList, isRefreshing) { rvm.refreshRestaurantList() }
 
 
         } else {
-            Log.d("error:",rvm.errorMsg)
-            RestaurantEmptyList()
+            RestaurantListError(rvm.errorMsg)
 
         }
     }

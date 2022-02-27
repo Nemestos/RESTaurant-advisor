@@ -5,5 +5,5 @@ import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 
 @Composable
 fun RestaurantsScreen() {
-    RestaurantListScreen(rvm = RestaurantViewModel())
+    RestaurantListScreen()
 }

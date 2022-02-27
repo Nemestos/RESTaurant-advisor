@@ -2,6 +2,8 @@ package com.tah.fourmetal.data.api
 
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import okhttp3.OkHttpClient
+import okhttp3.Protocol
+import okhttp3.internal.immutableListOf
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -22,9 +24,12 @@ interface RetrofitInstance {
                 this.level = HttpLoggingInterceptor.Level.BODY
             }
 
-            val client: OkHttpClient = OkHttpClient.Builder().apply {
-                this.addInterceptor(interceptor)
-            }.build()
+            val client: OkHttpClient =
+                OkHttpClient.Builder()
+                    .protocols(immutableListOf(Protocol.HTTP_1_1))
+                    .apply {
+                        this.addInterceptor(interceptor)
+                    }.build()
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)
