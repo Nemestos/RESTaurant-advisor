@@ -35,6 +35,12 @@ class SessionManager(private val context: Context) {
         }
     }
 
+    suspend fun logout() {
+        context.dataStore.edit { preferences ->
+            preferences.clear()
+        }
+    }
+
     val currentUserFlow: Flow<AuthUser?>
         get() = context.dataStore.data
             .catch { exception ->
@@ -48,17 +54,16 @@ class SessionManager(private val context: Context) {
             .map { preferences ->
                 val id = preferences[ID]
                 val authToken = preferences[AUTH_TOKEN]
-                Log.d("id::",id.toString())
-                Log.d("authToken::",authToken.toString())
+                Log.d("id::", id.toString())
+                Log.d("authToken::", authToken.toString())
                 if (id == null || authToken == null) {
                     null
-                }else{
+                } else {
                     AuthUser(
                         token = authToken,
                         id = id
                     )
                 }
-
 
 
             }

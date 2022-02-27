@@ -17,6 +17,8 @@ import com.tah.fourmetal.ui.form.Form
 import com.tah.fourmetal.ui.form.FormState
 import com.tah.fourmetal.ui.form.Validator
 import com.tah.fourmetal.ui.viewmodels.AuthViewModel
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -50,6 +52,7 @@ fun LoginScreen() {
         }
         if (authUser != null) {
             Text(text = authUser!!.token.orEmpty(), color = Color.Green)
+
         }
         Button(onClick = {
             if (state.validate()) {

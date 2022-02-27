@@ -80,6 +80,12 @@ class AuthViewModel constructor(val sessionManager: SessionManager) : ViewModel(
         }
     }
 
+    fun logout() {
+        viewModelScope.launch {
+            sessionManager.logout()
+        }
+    }
+
     fun clear() {
         errorMsg = ""
         successMsg = ""
