@@ -2,37 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aeef322-8f77-4055-a392-878c8b09220c" name="Changes" comment="[ADD]update">
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/androidTest/java/com/tah/fourmetal/BottomNavigationTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/CoreApplication.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/Modules.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/SessionManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/register/RegisterResp.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/models/AuthUser.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/TopBar.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/nginx/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker/nginx/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/androidTest/java/com/tah/fourmetal/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/AuthService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/AuthService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/BaseAuthResp.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/login/LoginBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/login/LoginBody.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/login/LoginResp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/auth/login/LoginResp.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/restaurants/RestaurantResp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/restaurants/RestaurantResp.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/restaurants/RestaurantService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/api/restaurants/RestaurantService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/models/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/data/models/User.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/form/Field.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/form/Field.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/login/LoginScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/login/LoginScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/BottomNavActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/BottomNavActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/BottomNavigation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/navigation/BottomNavigation.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/register/RegisterScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/register/RegisterScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/restaurant/RestaurantEmptyList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/restaurant/RestaurantListError.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/restaurant/RestaurantListScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/restaurant/RestaurantListScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/restaurant/RestaurantScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/restaurant/RestaurantScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/viewmodels/AuthViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/viewmodels/AuthViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/viewmodels/RestaurantViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/app/src/main/java/com/tah/fourmetal/ui/viewmodels/RestaurantViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/four-metal/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/four-metal/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,7 +236,7 @@
       <workItem from="1645820586286" duration="39000" />
       <workItem from="1645894859148" duration="123000" />
       <workItem from="1645964050523" duration="1955000" />
-      <workItem from="1645976034773" duration="684000" />
+      <workItem from="1645976034773" duration="2293000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD]begin docker archi">
       <created>1644833699059</created>

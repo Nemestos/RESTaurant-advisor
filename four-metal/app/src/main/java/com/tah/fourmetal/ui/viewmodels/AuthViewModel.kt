@@ -1,12 +1,9 @@
 package com.tah.fourmetal.ui.viewmodels
 
 import android.util.Log
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.*
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.tah.fourmetal.data.SessionManager
@@ -28,8 +25,7 @@ import javax.inject.Singleton
 class AuthViewModel constructor(val sessionManager: SessionManager) : ViewModel() {
     var errorMsg by mutableStateOf("")
     var successMsg by mutableStateOf("")
-        private set
-
+    var errorsList by mutableStateOf(listOf<String>())
     fun register(
         login: String,
         password: String,
@@ -45,10 +41,12 @@ class AuthViewModel constructor(val sessionManager: SessionManager) : ViewModel(
                 is NetworkResponse.Success -> {
                     Log.d("register:", resp.response.code().toString())
                     successMsg = "Successful register"
+                    errorMsg = ""
                 }
                 is NetworkResponse.Error -> {
-                    errorMsg = "Can't register"
-                    Log.d("register:", resp.body?.message.orEmpty())
+                    errorsList = resp.body!!.errors
+                    errorMsg = resp.body?.message.orEmpty()
+                    Log.d("register:", resp.body!!.errors.toString())
                 }
 
             }
@@ -89,6 +87,7 @@ class AuthViewModel constructor(val sessionManager: SessionManager) : ViewModel(
     fun clear() {
         errorMsg = ""
         successMsg = ""
+        errorsList = listOf()
     }
 
 

@@ -74,6 +74,14 @@ fun RegisterScreen() {
         if (!avm.successMsg.isEmpty()) {
             Text(text = avm.successMsg, color = Color.Green)
         }
+        if (avm.errorsList.isNotEmpty()) {
+            Column() {
+                avm.errorsList.forEach {
+                    Text(text = it)
+                }
+
+            }
+        }
         Button(onClick = {
             if (state.validate()) {
                 val infos = state.getData();

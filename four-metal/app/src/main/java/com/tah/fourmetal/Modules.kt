@@ -10,6 +10,6 @@ import org.koin.dsl.module
 
 val appModules = module {
     single { SessionManager(androidContext()) }
-    single { AuthViewModel(get()) }
+    viewModel { AuthViewModel(get()) }
     viewModel { RestaurantViewModel() }
 }
