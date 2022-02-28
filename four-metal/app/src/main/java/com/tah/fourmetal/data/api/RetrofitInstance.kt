@@ -27,6 +27,7 @@ interface RetrofitInstance {
             val client: OkHttpClient =
                 OkHttpClient.Builder()
                     .protocols(immutableListOf(Protocol.HTTP_1_1))
+                    .retryOnConnectionFailure(true)
                     .apply {
                         this.addInterceptor(interceptor)
                     }.build()

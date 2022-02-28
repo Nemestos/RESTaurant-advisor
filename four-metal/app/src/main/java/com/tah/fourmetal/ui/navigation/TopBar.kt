@@ -36,6 +36,13 @@ fun TopBarNavigation(name: String) {
                     Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
                 }
             }
+        },
+        actions = {
+            if (currUser != null) {
+                LogoutBtn {
+                    avm.logout()
+                }
+            }
         }
     )
 

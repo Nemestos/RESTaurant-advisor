@@ -97,7 +97,6 @@ dependencies {
     implementation "androidx.hilt:hilt-navigation-compose:+"
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:+"
 
-
     implementation "io.insert-koin:koin-androidx-compose:+"
     implementation "io.insert-koin:koin-android:+"
 

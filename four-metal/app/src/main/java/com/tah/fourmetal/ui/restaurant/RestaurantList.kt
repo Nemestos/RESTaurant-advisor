@@ -16,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.tah.fourmetal.data.models.Restaurant
+import com.tah.fourmetal.ui.navigation.LocalNavController
+import com.tah.fourmetal.ui.navigation.NavItem
 
 @Composable
 fun RestaurantList(
@@ -24,15 +26,14 @@ fun RestaurantList(
     onRefresh: () -> Unit
 ) {
     val length = restaurantList.size
-    val context = LocalContext.current
+    val navController = LocalNavController.current
     Column(modifier = Modifier.padding(10.dp)) {
         SwipeRefresh(state = rememberSwipeRefreshState(isRefreshing), onRefresh) {
             LazyColumn(modifier = Modifier.fillMaxHeight()) {
                 itemsIndexed(restaurantList) { index, rest ->
                     RestaurantListItem(rest) {
-                        val intent = Intent(context, ShowRestaurantActivity::class.java)
-                        intent.putExtra("selected_restaurant", it)
-                        context.startActivity(intent);
+
+                        navController.navigate("${NavItem.RestaurantDetail.route_base}/${rest.id}")
                     }
                     if (index < length - 2) {
                         Divider()

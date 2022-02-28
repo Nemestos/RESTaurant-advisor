@@ -18,7 +18,6 @@ class Restaurant extends Model
         'website',
         'hours'
     ];
-
     public function menus()
     {
         return $this->hasMany(Menu::class,"restaurant_id");

@@ -28,7 +28,7 @@ fun NavigationGraph(navController: NavHostController) {
             NavItem.RestaurantDetail.screen_route,
             arguments = NavItem.RestaurantDetail.arguments
         ) {
-            ShowRestaurantContent(it.arguments?.getInt("id"))
+            it.arguments?.getInt("id")?.let { it1 -> ShowRestaurantContent(it1) }
         }
         composable(BottomNavItem.Login.screen_route) {
             LoginScreen()

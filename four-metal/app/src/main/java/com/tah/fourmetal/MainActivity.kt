@@ -38,6 +38,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.tah.fourmetal.ui.navigation.*
 import com.tah.fourmetal.ui.restaurant.RestaurantListScreen
@@ -68,6 +69,7 @@ fun MainScreenContent() {
     val authViewModel = getViewModel<AuthViewModel>()
     val authUser by authViewModel.sessionManager.currentUserFlow.collectAsState(initial = null)
     val navController = LocalNavController.current
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
     val items = when (authUser) {
         null -> listOf<BottomNavItem>(
             BottomNavItem.Restaurants,
@@ -81,11 +83,12 @@ fun MainScreenContent() {
     }
     Scaffold(
         topBar = {
-            TopBarNavigation(name = "FourMetal")
+            TopBarNavigation(name = navBackStackEntry?.destination?.displayName.orEmpty())
         },
         bottomBar = {
             BottomNavigation(navController = navController, items = items)
         },
+        backgroundColor = Color.Black
     ) {
         NavigationGraph(
             navController = navController,

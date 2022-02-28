@@ -21,8 +21,8 @@ class UsersSeeder extends Seeder
         User::factory()->count(3)->create();
         $admin = User::factory()->create([
                 "login" => "admin",
-                "password" => bcrypt(env("ADMIN_PASSWORD")),
-                "email" => env("ADMIN_EMAIL")
+                "password" => bcrypt(config("app.admin_password")),
+                "email" => config("app.admin_email")
             ]
         );
         User::refreshToken($admin, Token::ADMIN_ABILITIES);

@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.context.GlobalContext.get
@@ -24,17 +26,25 @@ fun RestaurantListScreen() {
 
     })
     Scaffold(
-
+        backgroundColor = Color(0xFFE3D3C0)
     ) {
-        if (rvm.errorMsg.isEmpty()) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+        ) {
+            RestaurantListTop(title = "four metal")
+            if (rvm.errorMsg.isEmpty()) {
 
-            RestaurantList(rvm.restaurantList, isRefreshing) { rvm.refreshRestaurantList() }
+                RestaurantList(rvm.restaurantList, isRefreshing) { rvm.refreshRestaurantList() }
 
 
-        } else {
-            RestaurantListError(rvm.errorMsg)
+            } else {
+                RestaurantListError(rvm.errorMsg)
 
+            }
         }
+
     }
 }
 

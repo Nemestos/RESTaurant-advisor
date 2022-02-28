@@ -11,6 +11,7 @@ import com.haroldadmin.cnradapter.NetworkResponse
 import com.tah.fourmetal.data.api.restaurants.RestaurantResp
 import com.tah.fourmetal.data.api.restaurants.RestaurantService
 import com.tah.fourmetal.data.api.RetrofitInstance
+import com.tah.fourmetal.data.models.Menu
 import com.tah.fourmetal.data.models.Restaurant
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -24,6 +25,33 @@ class RestaurantViewModel : ViewModel() {
     private val _isRefreshing = MutableStateFlow(false)
     val isRefreshing: StateFlow<Boolean>
         get() = _isRefreshing.asStateFlow()
+
+    suspend fun getRestaurantFromId(id: Int): Restaurant? {
+        val retrofitInstance = RetrofitInstance.getInst().create(RestaurantService::class.java)
+        return when (val restaurant = retrofitInstance.getRestaurantFromId(id)) {
+            is NetworkResponse.Success -> {
+                restaurant.body.data
+            }
+            is NetworkResponse.Error -> {
+                null
+            }
+        }
+
+    }
+
+    suspend fun getMenus(id: Int): List<Menu>? {
+        val retrofitInstance = RetrofitInstance.getInst().create(RestaurantService::class.java)
+        return when (val menus = retrofitInstance.getMenusFromRestaurant(id)) {
+            is NetworkResponse.Success -> {
+                menus.body.data
+
+            }
+            is NetworkResponse.Error -> {
+                null
+            }
+        }
+
+    }
 
     suspend fun getRestaurantList() {
 

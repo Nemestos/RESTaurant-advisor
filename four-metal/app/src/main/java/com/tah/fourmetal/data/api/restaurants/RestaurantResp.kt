@@ -7,6 +7,10 @@ data class RestaurantResp(
     var data: List<Restaurant>
 )
 
+data class SingleRestaurantResp(
+    var data: Restaurant
+)
+
 data class RestaurantMenuResp(
     var data: List<Menu>
 )

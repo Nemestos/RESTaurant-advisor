@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/auth', [AuthController::class, 'auth'])->name("login");
 Route::get("/restaurants", [RestaurantController::class, "index"]);
+Route::get("/restaurant/{id}", [RestaurantController::class, "get"])->middleware(["menu-rest"]);
 Route::get("/restaurant/{id}/menus", [MenuController::class, "index"])->middleware(["menu-rest"]);
 
 Route::group([
