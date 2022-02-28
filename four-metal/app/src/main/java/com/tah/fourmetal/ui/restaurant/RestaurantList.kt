@@ -27,7 +27,7 @@ fun RestaurantList(
 ) {
     val length = restaurantList.size
     val navController = LocalNavController.current
-    Column(modifier = Modifier.padding(10.dp)) {
+    Column(modifier = Modifier.padding(2.dp)) {
         SwipeRefresh(state = rememberSwipeRefreshState(isRefreshing), onRefresh) {
             LazyColumn(modifier = Modifier.fillMaxHeight()) {
                 itemsIndexed(restaurantList) { index, rest ->

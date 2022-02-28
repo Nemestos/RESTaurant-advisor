@@ -42,6 +42,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.tah.fourmetal.ui.navigation.*
 import com.tah.fourmetal.ui.restaurant.RestaurantListScreen
+import com.tah.fourmetal.ui.theme.FourMetalColors
 import com.tah.fourmetal.ui.viewmodels.AuthViewModel
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -56,8 +57,12 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             CompositionLocalProvider(LocalNavController provides rememberNavController()) {
+                MaterialTheme(
+                    colors = FourMetalColors,
+                ) {
 
-                MainScreenContent()
+                    MainScreenContent()
+                }
             }
         }
     }
@@ -83,12 +88,12 @@ fun MainScreenContent() {
     }
     Scaffold(
         topBar = {
-            TopBarNavigation(name = navBackStackEntry?.destination?.displayName.orEmpty())
+            TopBarNavigation(name = navBackStackEntry?.destination?.route.orEmpty())
         },
         bottomBar = {
             BottomNavigation(navController = navController, items = items)
         },
-        backgroundColor = Color.Black
+        backgroundColor = MaterialTheme.colors.background
     ) {
         NavigationGraph(
             navController = navController,
