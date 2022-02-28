@@ -70,6 +70,7 @@ class AuthViewModel constructor(val sessionManager: SessionManager) : ViewModel(
                     )
                 }
                 is NetworkResponse.Error -> {
+                    Log.d("error","lol")
                     errorMsg = resp.body?.message.orEmpty()
 
                 }

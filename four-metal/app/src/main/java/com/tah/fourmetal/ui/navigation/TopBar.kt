@@ -54,7 +54,7 @@ fun LogoutBtn(onClick: () -> Unit) {
         Icon(
             Icons.Filled.Logout,
             contentDescription = "Logout from account",
-            tint = Color.LightGray
+            tint = Color.Black
         )
 
     }

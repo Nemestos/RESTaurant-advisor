@@ -13,13 +13,12 @@ fun Form(
     state: FormState,
     fields: List<Field>,
     onSubmitClick: () -> Unit,
-    onClearClick: () -> Unit
+    onClearClick: () -> Unit,
 ) {
     state.fields = fields
     Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
+            .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
