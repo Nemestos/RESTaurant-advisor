@@ -18,6 +18,7 @@ class CreateRestaurantsTable extends Migration
             $table->string("name")->unique();
             $table->longText("description");
             $table->float("grade");
+            $table->string("image_url")->nullable(true);
             $table->longText("localization");
             $table->string("phone_number");
             $table->string("website");

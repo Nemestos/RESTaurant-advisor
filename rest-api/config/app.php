@@ -16,6 +16,7 @@ return [
     'name' => env('APP_NAME', 'Laravel'),
     "admin_password" => env("ADMIN_PASSWORD", "admin"),
     "admin_email" => env("admin_email", "loloturp22@gmail.com"),
+    "default_image_url"=>"https://www.zanolliovens.com/wp-content/uploads/2016/04/default-placeholder.png",
 
     /*
     |--------------------------------------------------------------------------
@@ -167,7 +168,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        \App\Providers\RandomFoodImageProvider::class,
         /*
          * Application Service Providers...
          */

@@ -6,12 +6,11 @@ use App\Services\RandomFoodish;
 use App\Services\RandomFoodishAdapter;
 use App\Services\RandomFoodService;
 use Illuminate\Support\ServiceProvider;
-use App\Passport\Passport;
 
-class AppServiceProvider extends ServiceProvider
+class RandomFoodImageProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      *
      * @return void
      */
@@ -21,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      *
      * @return void
      */

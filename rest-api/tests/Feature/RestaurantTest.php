@@ -43,6 +43,7 @@ class   RestaurantTest extends TestCase
 
                 "id",
                 "name",
+                "image_url",
                 "description",
                 "grade",
                 "localization",
@@ -73,6 +74,7 @@ class   RestaurantTest extends TestCase
             "data" => [
                 "*" => [
                     "id",
+                    "image_url",
                     "name",
                     "description",
                     "grade",
@@ -90,6 +92,7 @@ class   RestaurantTest extends TestCase
                     return $json->where('id', $one->id)
                         ->where('name', $one->name)
                         ->where('description', $one->description)
+                        ->where('image_url', $one->image_url)
                         ->where('grade', strval($one->grade))
                         ->where('localization', $one->localization)
                         ->where('phone_number', $one->phone_number)
@@ -102,6 +105,7 @@ class   RestaurantTest extends TestCase
                     return $json->where('id', $two->id)
                         ->where('name', $two->name)
                         ->where('description', $two->description)
+                        ->where('image_url', $two->image_url)
                         ->where('grade', strval($two->grade))
                         ->where('localization', $two->localization)
                         ->where('phone_number', $two->phone_number)
