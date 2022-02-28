@@ -16,7 +16,7 @@ class RestaurantFactory extends Factory
     {
         $this->faker->addProvider(new RestaurantNameProvider($this->faker));
         return [
-            "name"=>$this->faker->restaurantName(),
+            "name"=>$this->faker->unique()->restaurantName(),
             "description"=>$this->faker->sentence(10),
             "grade"=>$this->faker->randomFloat(1,0,5),
             "localization"=>$this->faker->address(),

@@ -32,6 +32,28 @@ class   RestaurantTest extends TestCase
         ]);
     }
 
+    public function test_if_we_can_get_one_restaurant()
+    {
+        $one = Restaurant::factory()->createOne();
+
+        $resp = $this->json("GET", "api/restaurant/" . strval($one->id));
+        $resp->assertStatus(200);
+        $resp->assertJsonStructure([
+            "data" => [
+
+                "id",
+                "name",
+                "description",
+                "grade",
+                "localization",
+                "phone_number",
+                "website",
+                "hours",
+
+            ]
+        ]);
+    }
+
     /**
      * /restaurants
      *
@@ -125,6 +147,7 @@ class   RestaurantTest extends TestCase
             "id" => $restaurant->id
         ]);
     }
+
     /**
      * @depends test_if_we_can_create_restaurant_when_admin
      * /restaurant/{id}
@@ -139,6 +162,7 @@ class   RestaurantTest extends TestCase
         $resp->assertStatus(400);
 
     }
+
     /**
      * @depends test_if_we_can_create_restaurant_when_admin
      * /restaurant/{id}
@@ -156,6 +180,7 @@ class   RestaurantTest extends TestCase
             "description" => "mais"
         ]);
     }
+
     /**
      * @depends test_if_we_can_create_restaurant_when_admin
      * /restaurant/{id}

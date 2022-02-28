@@ -5,6 +5,7 @@ namespace App\Models;
 
 use App\Token;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -31,10 +32,20 @@ class User extends Authenticatable
         return array($user, $token);
     }
 
-    public static function refreshToken(User $user): \Laravel\Sanctum\NewAccessToken
+    public static function getAbilities(User $user): array
+    {
+        $row = DB::table("personal_access_tokens")
+            ->where("tokenable_id", "=", $user->id)
+            ->get("abilities")
+            ->collect();
+        return json_decode($row[0]->abilities);
+
+    }
+
+    public static function refreshToken(User $user, array $abilities): \Laravel\Sanctum\NewAccessToken
     {
         $user->tokens()->delete();
-        return User::attachNewToken($user, Token::USER_ABILITIES);
+        return User::attachNewToken($user, $abilities);
 
     }
 
@@ -46,9 +57,7 @@ class User extends Authenticatable
     public static function formNewToken($token): \Illuminate\Http\JsonResponse
     {
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-
+            'token' => $token,
         ]);
     }
 

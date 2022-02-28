@@ -10,17 +10,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.tah.fourmetal.R
+import com.tah.fourmetal.ui.viewmodels.AuthViewModel
 
 @Composable
-fun BottomNavigation(navController: NavController) {
-    val items = listOf(
-        BottomNavItem.Restaurants,
-        BottomNavItem.Login,
-        BottomNavItem.Register
-    )
+fun BottomNavigation(navController: NavController, items: List<BottomNavItem>) {
     BottomNavigation(
         backgroundColor = colorResource(id = R.color.teal_200),
         contentColor = Color.Black

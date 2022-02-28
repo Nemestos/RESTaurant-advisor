@@ -28,6 +28,11 @@ class RestaurantController extends Controller
         return response()->json(["data" => $restaurant->getAttributes()], 201);
     }
 
+    public function get(Request $request, $id)
+    {
+        return RestaurantResource::make(Restaurant::find($id));
+    }
+
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
