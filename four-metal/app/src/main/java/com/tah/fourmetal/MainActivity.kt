@@ -40,6 +40,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import coil.compose.LocalImageLoader
 import com.tah.fourmetal.ui.navigation.*
 import com.tah.fourmetal.ui.restaurant.RestaurantListScreen
 import com.tah.fourmetal.ui.theme.FourMetalColors

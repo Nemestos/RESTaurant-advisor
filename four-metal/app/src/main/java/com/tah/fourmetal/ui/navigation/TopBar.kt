@@ -38,7 +38,7 @@ fun TopBarNavigation(name: String) {
             }
         },
         actions = {
-            if (currUser != null) {
+            if (currUser.value != null) {
                 LogoutBtn {
                     avm.logout()
                 }

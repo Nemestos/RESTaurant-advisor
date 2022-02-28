@@ -1,12 +1,16 @@
 package com.tah.fourmetal.ui.form
 
 import android.util.Patterns
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 
 class Field(
@@ -42,7 +46,10 @@ class Field(
             value = text,
             isError = hasAnyError,
             label = { Text(text = lbl) },
-            modifier = Modifier.padding(),
+            modifier = Modifier
+                .padding()
+                .clip(RoundedCornerShape(20))
+                .background(Color.White),
             keyboardOptions = KeyboardOptions(
                 keyboardType = keyboardType,
                 autoCorrect = autoComplete

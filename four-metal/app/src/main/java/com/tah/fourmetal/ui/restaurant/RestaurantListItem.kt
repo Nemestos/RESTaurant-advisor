@@ -1,5 +1,6 @@
 package com.tah.fourmetal.ui.restaurant
 
+import android.util.Log
 import android.view.RoundedCorner
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,6 +23,9 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberAsyncImagePainter
+import coil.compose.rememberImagePainter
+import coil.request.ImageRequest
 import com.tah.fourmetal.R
 import com.tah.fourmetal.data.models.Restaurant
 import com.tah.fourmetal.ui.Utils
@@ -65,7 +69,10 @@ fun RestaurantListItem(rest: Restaurant, onClick: (Restaurant) -> Unit) {
 
                     }
                     Row() {
-                        Icon(painterResource(R.drawable.ic_location), contentDescription = "location icon")
+                        Icon(
+                            painterResource(R.drawable.ic_location),
+                            contentDescription = "location icon"
+                        )
                         if (localization?.city != null) {
                             Text(
                                 fontStyle = FontStyle.Italic,
@@ -78,12 +85,19 @@ fun RestaurantListItem(rest: Restaurant, onClick: (Restaurant) -> Unit) {
                     }
                     Text(text = rest.description.orEmpty(), maxLines = 4)
                 }
+                Log.d("url:", rest.image_url.orEmpty());
                 Image(
                     modifier = Modifier
                         .fillMaxSize()
+                        .height(300.dp)
                         .clip(RoundedCornerShape(10)),
                     contentScale = ContentScale.Crop,
-                    painter = painterResource(id = com.tah.fourmetal.R.mipmap.ic_burger_foreground),
+                    painter = rememberImagePainter(
+                        data = rest.image_url,
+                        builder = {
+                            crossfade(true)
+                        }
+                    ),
                     contentDescription = "burger fond"
 
                 )

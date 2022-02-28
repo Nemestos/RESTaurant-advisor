@@ -66,7 +66,25 @@ fun RegisterScreen() {
                     keyboardType = KeyboardType.Number,
                     validators = listOf(Validator.Required())
                 )
-            )
+            ),
+            onSubmitClick = {
+                if (state.validate()) {
+                    val infos = state.getData();
+                    avm.register(
+                        infos["login"].orEmpty(),
+                        infos["password"].orEmpty(),
+                        infos["email"].orEmpty(),
+                        infos["name"].orEmpty(),
+                        infos["firstname"].orEmpty(),
+                        infos["age"].orEmpty().toInt()
+                    )
+                }
+
+            },
+            onClearClick = {
+                state.clear()
+                avm.clear()
+            }
         )
         if (!avm.errorMsg.isEmpty()) {
             Text(text = avm.errorMsg, color = Color.Red)
@@ -82,28 +100,7 @@ fun RegisterScreen() {
 
             }
         }
-        Button(onClick = {
-            if (state.validate()) {
-                val infos = state.getData();
-                avm.register(
-                    infos["login"].orEmpty(),
-                    infos["password"].orEmpty(),
-                    infos["email"].orEmpty(),
-                    infos["name"].orEmpty(),
-                    infos["firstname"].orEmpty(),
-                    infos["age"].orEmpty().toInt()
-                )
-            }
-        }) {
-            Text("Submit")
 
-        }
-        Button(onClick = {
-            state.clear()
-        }) {
-            Text("Clear")
-
-        }
 
     }
 }

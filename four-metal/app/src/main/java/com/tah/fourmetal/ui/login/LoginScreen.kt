@@ -45,7 +45,22 @@ fun LoginScreen() {
                     keyboardType = KeyboardType.Password,
                     validators = listOf(Validator.Required())
                 )
-            )
+            ),
+            onSubmitClick = {
+                if (state.validate()) {
+                    val infos = state.getData();
+                    avm.clear()
+                    avm.login(
+                        infos["login"].orEmpty(),
+                        infos["password"].orEmpty()
+                    )
+
+                }
+            },
+            onClearClick = {
+                state.clear()
+                avm.clear()
+            }
         )
         if (!avm.errorMsg.isEmpty()) {
             Text(text = avm.errorMsg, color = Color.Red)
@@ -54,28 +69,7 @@ fun LoginScreen() {
             Text(text = authUser!!.token.orEmpty(), color = Color.Green)
 
         }
-        Button(onClick = {
-            if (state.validate()) {
-                val infos = state.getData();
-                avm.clear()
-                avm.login(
-                    infos["login"].orEmpty(),
-                    infos["password"].orEmpty()
-                )
 
-            }
-        }) {
-            Text("Submit")
-
-        }
-
-        Button(onClick = {
-            state.clear()
-            avm.clear()
-        }) {
-            Text("Clear")
-
-        }
 
     }
 }

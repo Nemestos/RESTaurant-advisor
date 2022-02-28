@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tah.fourmetal.R
+import com.tah.fourmetal.ui.RandomIcon
 import com.tah.fourmetal.ui.theme.Righteous
 import okhttp3.internal.immutableListOf
 import java.util.*
@@ -26,7 +27,7 @@ import java.util.*
 
 @Composable
 fun RestaurantListTop(title: String) {
-    val availablesLogos = immutableListOf(R.drawable.ic_cat, R.drawable.ic_fox)
+
     Row(
         horizontalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
@@ -40,12 +41,9 @@ fun RestaurantListTop(title: String) {
             fontFamily = Righteous,
             color = Color.White
         )
-        Icon(
-            painterResource(
-                id = availablesLogos.random()
-            ),
-            "top logo",
-            Modifier.size(64.dp)
+        RandomIcon(
+            modifier = Modifier.size(64.dp),
+            elts = immutableListOf(R.drawable.ic_cat, R.drawable.ic_fox)
         )
 
     }
