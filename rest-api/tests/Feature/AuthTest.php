@@ -143,5 +143,15 @@ class AuthTest extends TestCase
         ])->assertStatus(400);
     }
 
+    /**
+     * /users
+     * @depends test_if_we_can_register
+     * @return void
+     */
+    public function test_if_we_cant_access_to_protected_route_when_not_auth()
+    {
+        $this->json('GET', 'api/users')->assertStatus(400);
+    }
+
 
 }

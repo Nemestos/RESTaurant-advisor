@@ -19,6 +19,7 @@ class RestaurantResource extends JsonResource
             "name" => $this->name,
             "description" => $this->description,
             "grade" => $this->grade,
+            "image_url" => $this->image_url != null ? $this->image_url : config("app.default_image_url"),
             "localization" => $this->localization,
             "phone_number" => $this->phone_number,
             "website" => $this->website,

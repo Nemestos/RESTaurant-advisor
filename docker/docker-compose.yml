@@ -10,6 +10,8 @@ services:
     environment:
       - APP_ENV=${APP_ENV}
       - APP_SECRET=${APP_SECRET}
+      - XDEBUG_MODES=coverage
+
     volumes:
       - ../rest-api:/var/www
       - /var/www/vendor
