@@ -15,7 +15,7 @@ interface RetrofitInstance {
 
 
     companion object {
-        const val BASE_URL = "https://rest-etna-42-lol.loca.lt/api/"
+        const val BASE_URL = "http://192.168.1.110:81/api/"
 
         //singleton(une seule instance)
         fun getInst(): Retrofit {
