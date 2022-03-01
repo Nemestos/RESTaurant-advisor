@@ -57,7 +57,8 @@ fun RestaurantListItem(rest: Restaurant, onClick: (Restaurant) -> Unit) {
                         .fillMaxHeight()
                         .fillMaxWidth(0.45f)
                 ) {
-                    Row() {
+                    Row(
+                    ) {
 
 
                         Text(
@@ -81,6 +82,11 @@ fun RestaurantListItem(rest: Restaurant, onClick: (Restaurant) -> Unit) {
                                 overflow = TextOverflow.Clip
                             )
                         }
+
+
+                    }
+                    Row(){
+                        RatingIndicator(colorTint = Color.Gray, rating = rest.grade.toString())
 
                     }
                     Text(text = rest.description.orEmpty(), maxLines = 4)

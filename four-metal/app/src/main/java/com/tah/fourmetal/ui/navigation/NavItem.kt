@@ -19,4 +19,11 @@ sealed class NavItem(
         )
     )
 
+    object RestaurantMenu : NavItem(
+        "View Menus", "restaurant", "restaurant/{rest_id}/menus",
+        arguments = listOf(
+            navArgument("rest_id") { type = NavType.IntType }
+        ),
+    )
+
 }
