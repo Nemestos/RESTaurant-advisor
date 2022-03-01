@@ -25,7 +25,7 @@ class RestaurantFactory extends Factory
             "localization" => $this->faker->address(),
             "phone_number" => $this->faker->e164PhoneNumber(),
             "website" => $this->faker->url(),
-            "hours" => $this->faker->time("l-l H-H")
+            "hours" => $this->faker->time("l") . "-" . $this->faker->time("l") . ' ' . $this->faker->time("h") . "-" . $this->faker->time("h")
         ];
     }
 }
