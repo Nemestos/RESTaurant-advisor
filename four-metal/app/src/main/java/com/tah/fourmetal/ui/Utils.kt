@@ -3,6 +3,7 @@ package com.tah.fourmetal.ui
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -11,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import coil.compose.rememberImagePainter
 import com.tah.fourmetal.ui.theme.Reenie
@@ -73,7 +75,8 @@ fun HeaderTitle(text: String) {
         fontFamily = Reenie,
         style = MaterialTheme.typography.h3,
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .size(64.dp),
         color = MaterialTheme.colors.onBackground,
         textAlign = TextAlign.Center
     )

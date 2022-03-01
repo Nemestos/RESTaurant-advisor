@@ -3,10 +3,13 @@ package com.tah.fourmetal.ui.restaurant
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -118,6 +121,7 @@ fun ShowRestaurantContent(id: Int) {
             )
             Text(
                 text = restaurant?.phone_number.orEmpty(),
+                fontFamily = Roboto,
                 fontWeight = FontWeight.Thin
             )
             Column(
@@ -125,7 +129,23 @@ fun ShowRestaurantContent(id: Int) {
                     .fillMaxWidth(),
                 horizontalAlignment = Alignment.End
             ) {
+                Card(
+                    shape = RoundedCornerShape(30.dp),
+                    modifier = Modifier
+                        .wrapContentSize()
 
+                        .padding(10.dp)
+                ) {
+                    Text(
+                        text = restaurant?.hours.orEmpty(),
+                        modifier = Modifier
+                            .fillMaxWidth(0.60f)
+                            .background(Color.White)
+                            .padding(16.dp),
+                        textAlign = TextAlign.Justify
+                    )
+
+                }
                 RestaurantDetailsBottom(
                     restaurant = restaurant,
                     btnModifier = Modifier.wrapContentSize(),

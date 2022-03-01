@@ -44,6 +44,7 @@ import coil.compose.LocalImageLoader
 import com.tah.fourmetal.ui.navigation.*
 import com.tah.fourmetal.ui.restaurant.RestaurantListScreen
 import com.tah.fourmetal.ui.theme.FourMetalColors
+import com.tah.fourmetal.ui.theme.RobotoTypo
 import com.tah.fourmetal.ui.viewmodels.AuthViewModel
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -59,6 +60,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CompositionLocalProvider(LocalNavController provides rememberNavController()) {
                 MaterialTheme(
+                    typography = RobotoTypo,
                     colors = FourMetalColors,
                 ) {
 

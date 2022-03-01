@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -28,8 +29,6 @@ const val EXPAND_DURATION = 500
 const val FADE_IN_DURATION = 300
 const val FADE_OUT_DURATION = 700
 const val COLLAPSE_DURATION = 500
-val card_expanded = Color.Green
-val card_collapsed = Color.White
 
 @Composable
 fun ShowRestaurantMenu(id: Int) {
@@ -40,19 +39,25 @@ fun ShowRestaurantMenu(id: Int) {
     LaunchedEffect(key1 = Unit) {
         menusViewModel.getMenus(id)
     }
-    HeaderTitle(text = "Nos Menus")
-    LazyColumn {
-        itemsIndexed(menus.value) { _, menu ->
-            ExpandableMenu(
-                menu = menu,
-                onMenuClicked = {
-                    menusViewModel.onMenuClicked(menu.id)
-                    Log.d("debug:", "clicked")
-                },
-                expanded = expandableMenus.value.contains(menu.id)
-            )
+    Column(
+        modifier = Modifier.padding(10.dp)
+    ) {
+
+        HeaderTitle(text = "Nos Menus")
+        LazyColumn(verticalArrangement = Arrangement.spacedBy(15.dp)) {
+            itemsIndexed(menus.value) { _, menu ->
+                ExpandableMenu(
+                    menu = menu,
+                    onMenuClicked = {
+                        menusViewModel.onMenuClicked(menu.id)
+                        Log.d("debug:", "clicked")
+                    },
+                    expanded = expandableMenus.value.contains(menu.id)
+                )
+            }
         }
     }
+
 }
 
 @Composable
@@ -102,7 +107,7 @@ fun MenuContent(
         enter = enterExpand + enterFadeIn,
         exit = exitCollapse + exitFadeOut
     ) {
-        Column(modifier = Modifier.padding(8.dp)) {
+        Column(modifier = Modifier.padding(16.dp)) {
 //            Spacer(modifier = Modifier.heightIn(100.dp))
             Text(
                 "Description:${menu.description}",
@@ -117,6 +122,7 @@ fun MenuContent(
     }
 }
 
+@SuppressLint("UnusedTransitionTargetStateParameter")
 @Composable
 fun ExpandableMenu(menu: Menu, onMenuClicked: () -> Unit, expanded: Boolean) {
     val transitionState = remember {
@@ -125,37 +131,31 @@ fun ExpandableMenu(menu: Menu, onMenuClicked: () -> Unit, expanded: Boolean) {
         }
     }
     val transition = updateTransition(transitionState, label = "transition menu")
-    val menudBgColor by transition.animateColor({
-        tween(durationMillis = EXPAND_DURATION)
-    }, label = "") {
-        if (it) card_expanded else card_collapsed
-    }
     val menuElevation by transition.animateDp({
         tween(durationMillis = EXPAND_DURATION)
     }, label = "") {
-        if (it) 48.dp else 24.dp
+        if (expanded) 48.dp else 24.dp
     }
 
     val menuRoundCorners by transition.animateDp({
         tween(durationMillis = EXPAND_DURATION, easing = FastOutSlowInEasing)
     }, label = "") {
-        if (it) 0.dp else 16.dp
+        if (expanded) 0.dp else 16.dp
 
     }
 
     Card(
-        backgroundColor = menudBgColor,
-        elevation = menuElevation,
+        backgroundColor = MaterialTheme.colors.secondary,
         shape = RoundedCornerShape(menuRoundCorners),
         modifier = Modifier
             .fillMaxWidth()
     ) {
         Column {
-            Box(modifier = Modifier.clickable { onMenuClicked() }) {
+            Card(modifier = Modifier.clickable { onMenuClicked() }, elevation = menuElevation) {
                 MenuTitle(title = menu.name)
 
             }
-            MenuContent(menu = menu, visible = expanded, initialVisibility = expanded)
+            MenuContent(menu = menu, visible = expanded, initialVisibility = true)
         }
 
     }
