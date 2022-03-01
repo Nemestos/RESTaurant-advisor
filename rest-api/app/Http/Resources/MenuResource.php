@@ -19,7 +19,7 @@ class MenuResource extends JsonResource
             "name" => $this->name,
             "restaurant" => RestaurantResource::make($this->restaurant),
             "description" => $this->description,
-            "price" => $this->grade,
+            "price" => $this->price,
         ];
     }
 }
