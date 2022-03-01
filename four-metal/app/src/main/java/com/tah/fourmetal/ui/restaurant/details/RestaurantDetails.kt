@@ -42,26 +42,21 @@ fun ShowRestaurantContent(id: Int) {
     val navController = LocalNavController.current
     val coroutineScope = rememberCoroutineScope()
     var restaurant by remember { mutableStateOf<Restaurant?>(null) }
-    var menus = remember {
-        mutableStateListOf<Menu>()
+    LaunchedEffect(key1 = Unit) {
+        restaurant = rvm.getRestaurantFromId(id)
     }
     val colors = listOf(
         MaterialTheme.colors.background,
         Color.Transparent
     )
     val scrollState = rememberScrollState()
-    LaunchedEffect(Unit, block = {
-        restaurant = rvm.getRestaurantFromId(id)
-        rvm.getMenus(id)?.let { menus.clear();menus.addAll(it) }
-    })
-
 
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(scrollState)
-            .padding(10.dp),
+            .verticalScroll(scrollState),
+
         verticalArrangement = Arrangement.spacedBy(10.dp)
 
     ) {
@@ -79,6 +74,7 @@ fun ShowRestaurantContent(id: Int) {
                     alpha = 0.99f
                 }
                 .height(300.dp)
+                .fillMaxWidth()
                 .drawWithContent {
                     drawContent()
                     drawRect(
@@ -88,7 +84,7 @@ fun ShowRestaurantContent(id: Int) {
                 }
         )
         Column(
-            Modifier.padding(bottom = 100.dp),
+            Modifier.padding(bottom = 100.dp, start = 10.dp, top = 10.dp, end = 10.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             Text(

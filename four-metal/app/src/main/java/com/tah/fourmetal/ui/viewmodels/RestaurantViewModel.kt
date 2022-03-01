@@ -39,19 +39,6 @@ class RestaurantViewModel : ViewModel() {
 
     }
 
-    suspend fun getMenus(id: Int): List<Menu>? {
-        val retrofitInstance = RetrofitInstance.getInst().create(RestaurantService::class.java)
-        return when (val menus = retrofitInstance.getMenusFromRestaurant(id)) {
-            is NetworkResponse.Success -> {
-                menus.body.data
-
-            }
-            is NetworkResponse.Error -> {
-                null
-            }
-        }
-
-    }
 
     suspend fun getRestaurantList() {
 

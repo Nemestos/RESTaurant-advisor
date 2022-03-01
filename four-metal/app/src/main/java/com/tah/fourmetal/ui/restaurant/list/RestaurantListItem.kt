@@ -60,13 +60,11 @@ fun RestaurantListItem(rest: Restaurant, onClick: (Restaurant) -> Unit) {
                     Row(
                     ) {
 
-
                         Text(
                             text = rest.name.orEmpty(),
                             fontWeight = FontWeight.Bold,
                             style = MaterialTheme.typography.h5
                         )
-
 
                     }
                     Row() {
@@ -85,7 +83,7 @@ fun RestaurantListItem(rest: Restaurant, onClick: (Restaurant) -> Unit) {
 
 
                     }
-                    Row(){
+                    Row() {
                         RatingIndicator(colorTint = Color.Gray, rating = rest.grade.toString())
 
                     }
