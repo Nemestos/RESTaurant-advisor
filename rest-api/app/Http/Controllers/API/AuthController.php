@@ -58,7 +58,7 @@ class AuthController extends Controller
         $validated = $validator->validated();
 
         list($user, $token) = User::createNormalUser($validated);
-        return response()->json(["token" => $token, "user_id" => $user->id], 201);
+        return response()->json(["token" => $token->plainTextToken, "user_id" => $user->id], 201);
 
     }
 

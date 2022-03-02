@@ -58,6 +58,7 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::find($id);
 
         $restaurant->delete();
+        return response()->json(["message" => "successful delete " . $id]);
 
     }
 
