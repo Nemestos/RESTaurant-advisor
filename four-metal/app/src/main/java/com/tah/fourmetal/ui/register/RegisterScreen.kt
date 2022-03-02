@@ -108,7 +108,7 @@ fun RegisterScreen() {
         if (avm.errorsList.isNotEmpty()) {
             Column() {
                 avm.errorsList.forEach {
-                    Text(text = it)
+                    Text(text = it.orEmpty())
                 }
 
             }

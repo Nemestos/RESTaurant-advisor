@@ -2,6 +2,7 @@ package com.tah.fourmetal.ui.restaurant
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -14,6 +15,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
@@ -29,14 +31,19 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import coil.compose.rememberImagePainter
 import com.tah.fourmetal.data.models.Menu
 import com.tah.fourmetal.data.models.Restaurant
+import com.tah.fourmetal.ui.navigation.BottomNavItem
 import com.tah.fourmetal.ui.navigation.LocalNavController
 import com.tah.fourmetal.ui.navigation.NavItem
 import com.tah.fourmetal.ui.theme.Reenie
 import com.tah.fourmetal.ui.theme.Roboto
+import com.tah.fourmetal.ui.viewmodels.AuthViewModel
 import com.tah.fourmetal.ui.viewmodels.CheckRightsViewModel
+import com.tah.fourmetal.ui.viewmodels.ManageRestaurantViewModel
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 import org.koin.androidx.compose.getViewModel
 
@@ -169,8 +176,7 @@ fun RestaurantDetailsBottom(
 ) {
     val navController = LocalNavController.current
     val context = LocalContext.current
-    val cvm = getViewModel<CheckRightsViewModel>()
-
+    val mrvm = getViewModel<ManageRestaurantViewModel>()
     Row(
         Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(15.dp, Alignment.End)
@@ -206,22 +212,50 @@ fun RestaurantDetailsBottom(
                 textAlign = TextAlign.Center,
                 fontSize = fontSize.sp
             )
+
         }
-        if (cvm.checkRights(listOf("delete_restaurant")).value == true)
-            Button(
-                modifier = btnModifier,
-
-                onClick = {
-                    Toast.makeText(context, "restaurant delete", Toast.LENGTH_SHORT).show()
-                },
-
-                ) {
-                Text(
-                    text = "DELETE",
-                    fontFamily = Reenie,
-                    textAlign = TextAlign.Center,
-                    fontSize = fontSize.sp
-                )
-            }
+        AbilityButton(
+            textString = "Delete",
+            fontSize = fontSize,
+            onClick = {
+                restaurant?.id?.let { mrvm.deleteRestaurant(it) }
+                navController.navigate(BottomNavItem.Restaurants.screen_route)
+            },
+            abilities = listOf("delete_restaurant")
+        )
     }
+}
+
+@Composable
+fun AbilityButton(
+    modifier: Modifier = Modifier,
+    textString: String,
+    fontSize: Int,
+    onClick: () -> Unit,
+    abilities: List<String>
+) {
+    val cvm = getViewModel<CheckRightsViewModel>()
+    val avm = getViewModel<AuthViewModel>()
+    val currUser = avm.sessionManager.currentUserFlow.collectAsState(initial = null)
+    val currState = cvm.currState
+    LaunchedEffect(key1 = Unit) {
+        cvm.checkRights(currUser.value, abilities)
+    }
+    Log.d("currstate", currState.toString())
+    if (currState) {
+        Button(
+            modifier = modifier,
+
+            onClick = onClick,
+
+            ) {
+            Text(
+                text = "DELETE",
+                fontFamily = Reenie,
+                textAlign = TextAlign.Center,
+                fontSize = fontSize.sp
+            )
+        }
+    }
+
 }
