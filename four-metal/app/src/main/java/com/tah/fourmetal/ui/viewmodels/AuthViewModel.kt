@@ -2,24 +2,17 @@ package com.tah.fourmetal.ui.viewmodels
 
 import android.util.Log
 import androidx.compose.runtime.*
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.lifecycle.*
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.tah.fourmetal.data.SessionManager
 
 import com.tah.fourmetal.data.api.RetrofitInstance
 import com.tah.fourmetal.data.api.auth.AuthService
+import com.tah.fourmetal.data.api.auth.login.AbilitiesBody
 import com.tah.fourmetal.data.api.auth.login.LoginBody
 import com.tah.fourmetal.data.api.auth.register.RegisterBody
 import com.tah.fourmetal.data.models.AuthUser
-import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.scopes.ViewModelScoped
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import java.lang.Exception
-import javax.inject.Inject
-import javax.inject.Singleton
 
 
 class AuthViewModel constructor(val sessionManager: SessionManager) : ViewModel() {
@@ -70,7 +63,7 @@ class AuthViewModel constructor(val sessionManager: SessionManager) : ViewModel(
                     )
                 }
                 is NetworkResponse.Error -> {
-                    Log.d("error","lol")
+                    Log.d("error", "lol")
                     errorMsg = resp.body?.message.orEmpty()
 
                 }

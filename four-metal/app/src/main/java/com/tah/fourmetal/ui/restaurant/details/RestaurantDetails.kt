@@ -2,6 +2,7 @@ package com.tah.fourmetal.ui.restaurant
 
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -35,6 +36,7 @@ import com.tah.fourmetal.ui.navigation.LocalNavController
 import com.tah.fourmetal.ui.navigation.NavItem
 import com.tah.fourmetal.ui.theme.Reenie
 import com.tah.fourmetal.ui.theme.Roboto
+import com.tah.fourmetal.ui.viewmodels.CheckRightsViewModel
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 import org.koin.androidx.compose.getViewModel
 
@@ -167,6 +169,8 @@ fun RestaurantDetailsBottom(
 ) {
     val navController = LocalNavController.current
     val context = LocalContext.current
+    val cvm = getViewModel<CheckRightsViewModel>()
+
     Row(
         Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(15.dp, Alignment.End)
@@ -203,5 +207,21 @@ fun RestaurantDetailsBottom(
                 fontSize = fontSize.sp
             )
         }
+        if (cvm.checkRights(listOf("delete_restaurant")).value == true)
+            Button(
+                modifier = btnModifier,
+
+                onClick = {
+                    Toast.makeText(context, "restaurant delete", Toast.LENGTH_SHORT).show()
+                },
+
+                ) {
+                Text(
+                    text = "DELETE",
+                    fontFamily = Reenie,
+                    textAlign = TextAlign.Center,
+                    fontSize = fontSize.sp
+                )
+            }
     }
 }

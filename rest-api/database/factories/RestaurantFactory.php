@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class RestaurantFactory extends Factory
 {
 
+
     /**
      * Define the model's default state.
      *
@@ -22,6 +23,7 @@ class RestaurantFactory extends Factory
             "name" => $this->faker->unique()->restaurantName(),
             "description" => $this->faker->sentence(10),
             "grade" => $this->faker->randomFloat(1, 0, 5),
+            "image_url" => config("app.default_image_url"),
             "localization" => $this->faker->address(),
             "phone_number" => $this->faker->e164PhoneNumber(),
             "website" => $this->faker->url(),

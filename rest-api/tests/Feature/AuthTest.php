@@ -153,5 +153,28 @@ class AuthTest extends TestCase
         $this->json('GET', 'api/users')->assertStatus(400);
     }
 
+    public function test_if_we_can_check_the_abilities()
+    {
+        $user = User::factory()->createOne();
+        $token = User::attachNewToken($user, Token::USER_ABILITIES)->plainTextToken;
+        $resp = $this->json('POST', 'api/checkrights', [
+            "token" => $token,
+            "abilities" => [
+                Token::USER_ABILITIES[array_rand(Token::USER_ABILITIES)]
+
+            ]
+        ], ['Accept' => 'application/json']);
+        $resp->assertStatus(200);
+        $resp->assertJson(fn(AssertableJson $json) => $json->where("message", true));
+        $resp = $this->json('POST', 'api/checkrights', [
+            "token" => $token,
+            "abilities" => [
+                Token::ADMIN_ABILITIES[array_rand(Token::ADMIN_ABILITIES)]
+
+            ]
+        ], ['Accept' => 'application/json']);
+        $resp->assertStatus(200);
+        $resp->assertJson(fn(AssertableJson $json) => $json->where("message", false));
+    }
 
 }

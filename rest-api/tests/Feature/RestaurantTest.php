@@ -65,7 +65,6 @@ class   RestaurantTest extends TestCase
         $user = User::factory()->create();
         $one = Restaurant::factory()->createOne();
         $two = Restaurant::factory()->createOne();
-
         Sanctum::actingAs($user, Token::USER_ABILITIES);
 
         $resp = $this->json("GET", "api/restaurants");
@@ -92,7 +91,7 @@ class   RestaurantTest extends TestCase
                     return $json->where('id', $one->id)
                         ->where('name', $one->name)
                         ->where('description', $one->description)
-                        ->where('image_url', $one->image_url)
+                        ->where('image_url', $one->image_url, null)
                         ->where('grade', strval($one->grade))
                         ->where('localization', $one->localization)
                         ->where('phone_number', $one->phone_number)

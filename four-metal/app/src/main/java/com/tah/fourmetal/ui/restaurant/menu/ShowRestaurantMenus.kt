@@ -40,7 +40,7 @@ fun ShowRestaurantMenu(id: Int) {
         menusViewModel.getMenus(id)
     }
     Column(
-        modifier = Modifier.padding(10.dp)
+        modifier = Modifier.padding(top = 10.dp,start = 10.dp,end = 10.dp,bottom = 70.dp)
     ) {
 
         HeaderTitle(text = "Nos Menus")

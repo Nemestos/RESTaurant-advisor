@@ -7,6 +7,7 @@ use App\Http\Resources\UserResource;
 use http\Exception\InvalidArgumentException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
@@ -61,10 +62,30 @@ class AuthController extends Controller
 
     }
 
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function check(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            "token" => "required",
+            "abilities" => "required|array",
+            "abilities.*" => "required|string|distinct"
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+        $validated = $validator->validated();
+        $token = User::getTokenModel($validated["token"]);
+        if ($token == null) {
+            return response()->json(["message" => "token expired"], 400);
+        }
+        foreach ($validated["abilities"] as $ability) {
+            if ($token->cant($ability)) {
+                return response(["message" => false]);
+            }
+        }
+        return response(["message" => true]);
 
-//    public function userInfo()
-//    {
-//        $user = auth()->user();
-//        return response()->json(['user' => $user], 200);
-//    }
+    }
 }

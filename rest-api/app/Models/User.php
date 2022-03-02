@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class User extends Authenticatable
 {
@@ -59,6 +60,15 @@ class User extends Authenticatable
         return response()->json([
             'token' => $token,
         ]);
+    }
+
+    public static function getTokenModel($token): ?PersonalAccessToken
+    {
+        $token = PersonalAccessToken::findToken($token);
+        if ($token == null) {
+            return null;
+        }
+        return $token;
     }
 
 

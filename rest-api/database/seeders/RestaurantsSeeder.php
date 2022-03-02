@@ -26,7 +26,7 @@ class RestaurantsSeeder extends Seeder
     public function run()
     {
         Restaurant::truncate();
-        $restaurant = Restaurant::factory()->count(10)->create();
+        $restaurant = Restaurant::factory($this->randomFoodService)->count(10)->create();
         $restaurant->each(function (Restaurant $item){
             $item->update(["image_url" => $this->randomFoodService->getRandomFood()]);
         });
