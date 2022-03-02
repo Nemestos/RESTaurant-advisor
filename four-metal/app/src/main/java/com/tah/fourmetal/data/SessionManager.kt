@@ -10,6 +10,8 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import com.tah.fourmetal.data.models.AuthUser
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -39,6 +41,10 @@ class SessionManager(private val context: Context) {
         context.dataStore.edit { preferences ->
             preferences.clear()
         }
+    }
+
+    fun getUser(): LiveData<AuthUser?> {
+        return currentUserFlow.asLiveData();
     }
 
     val currentUserFlow: Flow<AuthUser?>

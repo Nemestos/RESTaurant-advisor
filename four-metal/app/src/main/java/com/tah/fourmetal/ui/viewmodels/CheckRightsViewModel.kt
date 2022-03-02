@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
-class CheckRightsViewModel constructor(authViewModel: AuthViewModel) : ViewModel() {
+class CheckRightsViewModel constructor(val retrofitInstance: RetrofitInstance) : ViewModel() {
     var errorMsg by mutableStateOf("")
     var currState by mutableStateOf(false)
 
@@ -32,9 +32,9 @@ class CheckRightsViewModel constructor(authViewModel: AuthViewModel) : ViewModel
             return
         }
         viewModelScope.launch {
-            val retrofitInstance = RetrofitInstance.getInst().create(AuthService::class.java)
+            val retrofit = retrofitInstance.getInst().create(AuthService::class.java)
             val checkInfo = AbilitiesBody(user.token, abilities)
-            when (val resp = retrofitInstance.check(checkInfo)) {
+            when (val resp = retrofit.check(checkInfo)) {
                 is NetworkResponse.Success -> {
 
 

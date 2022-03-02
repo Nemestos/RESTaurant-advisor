@@ -1,21 +1,26 @@
 package com.tah.fourmetal.ui.viewmodels
 
 import android.util.Log
-import androidx.compose.runtime.*
-import androidx.lifecycle.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.tah.fourmetal.data.SessionManager
-
 import com.tah.fourmetal.data.api.RetrofitInstance
 import com.tah.fourmetal.data.api.auth.AuthService
-import com.tah.fourmetal.data.api.auth.login.AbilitiesBody
 import com.tah.fourmetal.data.api.auth.login.LoginBody
 import com.tah.fourmetal.data.api.auth.register.RegisterBody
 import com.tah.fourmetal.data.models.AuthUser
 import kotlinx.coroutines.launch
 
 
-class AuthViewModel constructor(val sessionManager: SessionManager) : ViewModel() {
+class AuthViewModel constructor(
+    val sessionManager: SessionManager,
+    val retrofitInstance: RetrofitInstance
+) :
+    ViewModel() {
     var errorMsg by mutableStateOf("")
     var successMsg by mutableStateOf("")
     var errorsList by mutableStateOf(listOf<String?>())
@@ -28,9 +33,9 @@ class AuthViewModel constructor(val sessionManager: SessionManager) : ViewModel(
         age: Int,
     ) {
         viewModelScope.launch {
-            val retrofitInstance = RetrofitInstance.getInst().create(AuthService::class.java)
+            val retrofit = retrofitInstance.getInst().create(AuthService::class.java)
             val registerInfo = RegisterBody(login, password, email, name, firstname, age)
-            when (val resp = retrofitInstance.register(registerInfo)) {
+            when (val resp = retrofit.register(registerInfo)) {
                 is NetworkResponse.Success -> {
                     Log.d("register:", resp.response.code().toString())
                     successMsg = "Successful register"
@@ -51,9 +56,9 @@ class AuthViewModel constructor(val sessionManager: SessionManager) : ViewModel(
         password: String,
     ) {
         viewModelScope.launch {
-            val retrofitInstance = RetrofitInstance.getInst().create(AuthService::class.java)
+            val retrofit = retrofitInstance.getInst().create(AuthService::class.java)
             val loginInfo = LoginBody(login, password)
-            when (val resp = retrofitInstance.login(loginInfo)) {
+            when (val resp = retrofit.login(loginInfo)) {
                 is NetworkResponse.Success -> {
                     successMsg = "Success register"
                     sessionManager.login(

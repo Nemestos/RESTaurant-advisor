@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.tah.fourmetal.data.api.RetrofitInstance
+import com.tah.fourmetal.data.api.auth.AuthService
 import com.tah.fourmetal.data.api.restaurants.RestaurantService
 import com.tah.fourmetal.data.models.Menu
 import kotlinx.coroutines.Dispatchers
@@ -11,7 +12,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class MenusViewModel : ViewModel() {
+class MenusViewModel constructor(
+    val retrofitInstance: RetrofitInstance
+) : ViewModel() {
 
     private val _menus = MutableStateFlow(listOf<Menu>())
     val menus: StateFlow<List<Menu>> get() = _menus
@@ -22,8 +25,8 @@ class MenusViewModel : ViewModel() {
     suspend fun getMenus(id: Int) {
         viewModelScope.launch(Dispatchers.Default) {
 
-            val retrofitInstance = RetrofitInstance.getInst().create(RestaurantService::class.java)
-            when (val menus = retrofitInstance.getMenusFromRestaurant(id)) {
+            val retrofit = retrofitInstance.getInst().create(RestaurantService::class.java)
+            when (val menus = retrofit.getMenusFromRestaurant(id)) {
                 is NetworkResponse.Success -> {
                     _menus.emit(menus.body.data)
                 }

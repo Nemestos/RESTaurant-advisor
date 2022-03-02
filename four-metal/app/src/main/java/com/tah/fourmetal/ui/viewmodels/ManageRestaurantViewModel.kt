@@ -1,6 +1,8 @@
 package com.tah.fourmetal.ui.viewmodels
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -15,22 +17,24 @@ import com.tah.fourmetal.data.api.restaurants.RestaurantService
 import kotlinx.coroutines.launch
 
 class ManageRestaurantViewModel constructor(
+    val context: Context,
     val restaurantViewModel: RestaurantViewModel,
+    val retrofitInstance: RetrofitInstance
 ) :
     ViewModel() {
 
-    var currState by mutableStateOf("")
 
     fun deleteRestaurant(id: Int) {
         viewModelScope.launch {
-            val retrofitInstance = RetrofitInstance.getInst().create(RestaurantService::class.java)
-            when (val resp = retrofitInstance.deleteRestaurantFromId(id)) {
+            val retrofit = retrofitInstance.getInst().create(RestaurantService::class.java)
+            when (val resp = retrofit.deleteRestaurantFromId(id)) {
                 is NetworkResponse.Success -> {
-                    currState = "sucessful delete"
+                    Toast.makeText(context, "success for delete ", Toast.LENGTH_SHORT).show()
+
                     restaurantViewModel.refreshRestaurantList()
                 }
                 is NetworkResponse.Error -> {
-                    currState = "can't delete"
+                    Toast.makeText(context, "you don't have the rights", Toast.LENGTH_SHORT).show()
                 }
 
             }
