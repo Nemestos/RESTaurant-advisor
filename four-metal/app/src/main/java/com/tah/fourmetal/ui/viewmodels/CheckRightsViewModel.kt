@@ -13,6 +13,7 @@ import com.tah.fourmetal.data.api.RetrofitInstance
 import com.tah.fourmetal.data.api.auth.AuthService
 import com.tah.fourmetal.data.api.auth.login.AbilitiesBody
 import com.tah.fourmetal.data.api.auth.register.RegisterBody
+import com.tah.fourmetal.data.models.AuthUser
 import com.tah.fourmetal.data.models.User
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,31 +21,31 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
 class CheckRightsViewModel constructor(authViewModel: AuthViewModel) : ViewModel() {
-    val currUser = authViewModel.sessionManager.currentUserFlow.asLiveData()
     var errorMsg by mutableStateOf("")
+    var currState by mutableStateOf(false)
 
-    init {
-        currUser.obse
-    }
+    fun checkRights(user: AuthUser?, abilities: List<String>) {
 
-    fun checkRights(abilities: List<String>): LiveData<Boolean> {
-        val result = MutableLiveData<Boolean>(false);
-        Log.d("user", currUser.toString());
-        if (currUser.value == null) {
-            return result
+        Log.d("user", user.toString());
+        if (user == null) {
+            currState = false;
+            return
         }
         viewModelScope.launch {
             val retrofitInstance = RetrofitInstance.getInst().create(AuthService::class.java)
-            val checkInfo = AbilitiesBody(currUser.value!!.token, abilities)
+            val checkInfo = AbilitiesBody(user.token, abilities)
             when (val resp = retrofitInstance.check(checkInfo)) {
                 is NetworkResponse.Success -> {
-                    result.postValue(resp.body.message)
+
+
+                    currState = resp.body.message
                 }
                 is NetworkResponse.Error -> {
+                    currState = false
                     errorMsg = resp.body?.message.orEmpty()
                 }
             }
         }
-        return result
+
     }
 }

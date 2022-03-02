@@ -2,6 +2,7 @@ package com.tah.fourmetal.data.api.restaurants
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import retrofit2.Response
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
@@ -15,4 +16,7 @@ interface RestaurantService {
 
     @GET("restaurant/{id}/menus")
     suspend fun getMenusFromRestaurant(@Path("id") id: Int): NetworkResponse<RestaurantMenuResp, RestaurantErrorResp>
+
+    @DELETE("restaurant/{rest_id}")
+    suspend fun deleteRestaurantFromId(@Path("rest_id") rest_id: Int): NetworkResponse<RestaurantDeleteResp, RestaurantErrorResp>
 }

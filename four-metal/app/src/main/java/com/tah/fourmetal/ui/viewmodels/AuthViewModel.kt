@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 class AuthViewModel constructor(val sessionManager: SessionManager) : ViewModel() {
     var errorMsg by mutableStateOf("")
     var successMsg by mutableStateOf("")
-    var errorsList by mutableStateOf(listOf<String>())
+    var errorsList by mutableStateOf(listOf<String?>())
     fun register(
         login: String,
         password: String,
@@ -55,6 +55,7 @@ class AuthViewModel constructor(val sessionManager: SessionManager) : ViewModel(
             val loginInfo = LoginBody(login, password)
             when (val resp = retrofitInstance.login(loginInfo)) {
                 is NetworkResponse.Success -> {
+                    successMsg = "Success register"
                     sessionManager.login(
                         AuthUser(
                             resp.body.token,
@@ -65,6 +66,11 @@ class AuthViewModel constructor(val sessionManager: SessionManager) : ViewModel(
                 is NetworkResponse.Error -> {
                     Log.d("error", "lol")
                     errorMsg = resp.body?.message.orEmpty()
+                    if (resp.body?.errors != null) {
+
+                        errorsList = resp.body!!.errors!!
+                    }
+
 
                 }
 
