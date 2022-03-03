@@ -23,7 +23,7 @@ Route::post("/checkrights", [AuthController::class, "check"]);
 Route::get("/restaurants", [RestaurantController::class, "index"]);
 Route::get("/restaurant/{id}", [RestaurantController::class, "get"])->middleware(["menu-rest"]);
 Route::get("/restaurant/{id}/menus", [MenuController::class, "index"])->middleware(["menu-rest"]);
-
+Route::get("/restaurant/{rest_id}/menu/{menu_id}", [MenuController::class, "get"])->middleware(["menu_rest"]);
 Route::group([
     "middleware" => ["auth:sanctum"],
 ], function () {
