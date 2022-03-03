@@ -22,3 +22,7 @@ data class RestaurantErrorResp(
 data class RestaurantDeleteResp(
     var message: String?
 )
+
+data class RestaurantUpdateResp(
+    var message: String?
+)

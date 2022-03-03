@@ -13,6 +13,7 @@ import com.tah.fourmetal.ui.register.RegisterScreen
 import com.tah.fourmetal.ui.restaurant.RestaurantListScreen
 import com.tah.fourmetal.ui.restaurant.RestaurantsScreen
 import com.tah.fourmetal.ui.restaurant.ShowRestaurantContent
+import com.tah.fourmetal.ui.restaurant.details.RestaurantUpdateScreen
 import com.tah.fourmetal.ui.restaurant.menu.ShowRestaurantMenu
 import com.tah.fourmetal.ui.viewmodels.AuthViewModel
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
@@ -36,6 +37,12 @@ fun NavigationGraph(navController: NavHostController) {
             arguments = NavItem.RestaurantMenu.arguments
         ) {
             it.arguments?.getInt("rest_id")?.let { it1 -> ShowRestaurantMenu(it1) }
+        }
+        composable(
+            NavItem.RestaurantUpdateForm.screen_route,
+            arguments = NavItem.RestaurantUpdateForm.arguments
+        ){
+            it.arguments?.getInt("rest_id")?.let { it1-> RestaurantUpdateScreen(it1) }
         }
         composable(BottomNavItem.Login.screen_route) {
             LoginScreen()

@@ -26,4 +26,10 @@ sealed class NavItem(
         ),
     )
 
+    object RestaurantUpdateForm : NavItem(
+        "Update Restaurant", "restaurant/update", "restaurant/update/{rest_id}", arguments = listOf(
+            navArgument("rest_id") { type = NavType.IntType }
+        )
+    )
+
 }
