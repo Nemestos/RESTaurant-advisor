@@ -1,4 +1,4 @@
-package com.tah.fourmetal.ui.restaurant.details
+package com.tah.fourmetal.ui.restaurant.menu
 
 import android.util.Patterns
 import android.widget.Toast
@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import com.tah.fourmetal.data.api.restaurants.update.RestaurantUpdateBody
+import com.tah.fourmetal.data.models.Menu
 import com.tah.fourmetal.data.models.Restaurant
 import com.tah.fourmetal.ui.Utils
 import com.tah.fourmetal.ui.form.Field
@@ -23,22 +24,22 @@ import com.tah.fourmetal.ui.navigation.BottomNavItem
 import com.tah.fourmetal.ui.navigation.LocalNavController
 import com.tah.fourmetal.ui.navigation.NavItem
 import com.tah.fourmetal.ui.viewmodels.ManageRestaurantViewModel
+import com.tah.fourmetal.ui.viewmodels.MenusViewModel
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 import org.koin.androidx.compose.getViewModel
 
 
 @Composable
-fun RestaurantUpdateScreen(id: Int) {
-    val mrvm = getViewModel<ManageRestaurantViewModel>()
-    val rvm = getViewModel<RestaurantViewModel>()
+fun MenuUpdateScreen(rest_id: Int, menu_id: Int) {
+    val mvm = getViewModel<MenusViewModel>()
     val state by remember {
         mutableStateOf(FormState())
     }
     val navController = LocalNavController.current
     val context = LocalContext.current
-    var restaurant by remember { mutableStateOf<Restaurant?>(null) }
+    var menu by remember { mutableStateOf<Menu?>(null) }
     LaunchedEffect(key1 = Unit) {
-        restaurant = rvm.getRestaurantFromId(id)
+        menu = mvm.get&(id)
     }
     Column(
         modifier = Modifier

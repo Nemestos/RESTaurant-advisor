@@ -37,7 +37,6 @@ class CheckRightsViewModel constructor(val retrofitInstance: RetrofitInstance) :
             when (val resp = retrofit.check(checkInfo)) {
                 is NetworkResponse.Success -> {
 
-
                     currState = resp.body.message
                 }
                 is NetworkResponse.Error -> {
