@@ -19,6 +19,9 @@ import com.tah.fourmetal.ui.form.Field
 import com.tah.fourmetal.ui.form.Form
 import com.tah.fourmetal.ui.form.FormState
 import com.tah.fourmetal.ui.form.Validator
+import com.tah.fourmetal.ui.navigation.BottomNavItem
+import com.tah.fourmetal.ui.navigation.LocalNavController
+import com.tah.fourmetal.ui.navigation.NavItem
 import com.tah.fourmetal.ui.viewmodels.ManageRestaurantViewModel
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 import org.koin.androidx.compose.getViewModel
@@ -31,6 +34,7 @@ fun RestaurantUpdateScreen(id: Int) {
     val state by remember {
         mutableStateOf(FormState())
     }
+    val navController = LocalNavController.current
     val context = LocalContext.current
     var restaurant by remember { mutableStateOf<Restaurant?>(null) }
     LaunchedEffect(key1 = Unit) {
@@ -140,6 +144,9 @@ fun RestaurantUpdateScreen(id: Int) {
                         values["hours"]
                     )
                     mrvm.updateRestaurant(id, bodyValue)
+                    navController.navigate(BottomNavItem.Restaurants.screen_route)
+
+
                 }
             },
             onClearClick = {

@@ -230,7 +230,7 @@ fun RestaurantDetailsBottom(
             onClick = {
                 navController.navigate("${NavItem.RestaurantUpdateForm.route_base}/${restaurant?.id}")
             },
-            abilities = listOf("delete_restaurant")
+            abilities = listOf("put_restaurant")
         )
     }
 }
