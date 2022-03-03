@@ -36,7 +36,7 @@ class RestaurantController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "name" => "string|unique:restaurants",
+            "name" => "string",
             "description" => "string",
             "grade" => "numeric|between:0.0,5.0",
             "localization" => "string|max:255",
