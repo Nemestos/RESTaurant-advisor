@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.tah.fourmetal.data.api.RetrofitInstance
 import com.tah.fourmetal.data.api.auth.AuthService
@@ -41,7 +42,12 @@ class MenusViewModel constructor(
         }
 
     }
-
+    suspend fun getMenu(id:Int):Menu?{
+        viewModelScope.launch {
+            val retrofit = retrofitInstance.getInst()
+            wh
+        }
+    }
     fun onMenuClicked(id: Int) {
         _expandableMenus.value = _expandableMenus.value.toMutableList().also { list ->
             if (list.contains(id)) {
