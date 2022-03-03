@@ -28,6 +28,7 @@ import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import com.tah.fourmetal.R
 import com.tah.fourmetal.data.models.Restaurant
+import com.tah.fourmetal.ui.Localization
 import com.tah.fourmetal.ui.Utils
 
 @Composable
@@ -41,72 +42,92 @@ fun RestaurantListItem(rest: Restaurant, onClick: (Restaurant) -> Unit) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
 
-        Box(
+        RestaurantBoxItem(rest, localization)
+    }
+}
+
+@Composable
+fun RestaurantBoxItem(
+    rest: Restaurant,
+    localization: Localization?
+) {
+    Box(
+        modifier = Modifier
+            .clip(RoundedCornerShape(10))
+            .background(Color.White)
+            .padding(10.dp)
+    ) {
+
+        Row(
             modifier = Modifier
-                .clip(RoundedCornerShape(10))
-                .background(Color.White)
-                .padding(10.dp)
+                .fillMaxWidth(1f)
         ) {
+            RestaurantInfosColumn(rest, localization)
+            FastImageLoading(rest)
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(1f)
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .fillMaxWidth(0.45f)
-                ) {
-                    Row(
-                    ) {
-
-                        Text(
-                            text = rest.name.orEmpty(),
-                            fontWeight = FontWeight.Bold,
-                            style = MaterialTheme.typography.h5
-                        )
-
-                    }
-                    Row() {
-                        Icon(
-                            painterResource(R.drawable.ic_location),
-                            contentDescription = "location icon"
-                        )
-                        if (localization?.city != null) {
-                            Text(
-                                fontStyle = FontStyle.Italic,
-                                text = "${localization?.city} ${localization.postalCode}",
-                                maxLines = 2,
-                                overflow = TextOverflow.Clip
-                            )
-                        }
-
-
-                    }
-                    Row() {
-                        RatingIndicator(colorTint = Color.Gray, rating = rest.grade.toString())
-
-                    }
-                    Text(text = rest.description.orEmpty(), maxLines = 4)
-                }
-                Log.d("url:", rest.image_url.orEmpty());
-                Image(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .height(300.dp)
-                        .clip(RoundedCornerShape(10)),
-                    contentScale = ContentScale.Crop,
-                    painter = rememberImagePainter(
-                        data = rest.image_url,
-                        builder = {
-                            crossfade(true)
-                        }
-                    ),
-                    contentDescription = "burger fond"
-
-                )
-
-            }
         }
     }
+}
+
+@Composable
+fun RestaurantInfosColumn(
+    rest: Restaurant,
+    localization: Localization?
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxHeight()
+            .fillMaxWidth(0.45f)
+    ) {
+        Row(
+        ) {
+
+            Text(
+                text = rest.name.orEmpty(),
+                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.h5
+            )
+
+        }
+        Row() {
+            Icon(
+                painterResource(R.drawable.ic_location),
+                contentDescription = "location icon"
+            )
+            if (localization?.city != null) {
+                Text(
+                    fontStyle = FontStyle.Italic,
+                    text = "${localization?.city} ${localization.postalCode}",
+                    maxLines = 2,
+                    overflow = TextOverflow.Clip
+                )
+            }
+
+
+        }
+        Row() {
+            RatingIndicator(colorTint = Color.Gray, rating = rest.grade.toString())
+
+        }
+        Text(text = rest.description.orEmpty(), maxLines = 4)
+    }
+}
+
+@Composable
+fun FastImageLoading(rest: Restaurant) {
+    Image(
+        modifier = Modifier
+            .fillMaxSize()
+            .height(300.dp)
+            .clip(RoundedCornerShape(10)),
+        contentScale = ContentScale.Crop,
+        painter = rememberImagePainter(
+            data = rest.image_url,
+            builder = {
+                crossfade(true)
+            }
+        ),
+        contentDescription = "burger fond"
+
+    )
 }
