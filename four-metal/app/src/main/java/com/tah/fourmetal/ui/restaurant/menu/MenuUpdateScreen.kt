@@ -39,7 +39,7 @@ fun MenuUpdateScreen(rest_id: Int, menu_id: Int) {
     val context = LocalContext.current
     var menu by remember { mutableStateOf<Menu?>(null) }
     LaunchedEffect(key1 = Unit) {
-        menu = mvm.get&(id)
+        menu = mvm.getMenu(rest_id, menu_id)
     }
     Column(
         modifier = Modifier
@@ -54,97 +54,41 @@ fun MenuUpdateScreen(rest_id: Int, menu_id: Int) {
                 Field(
                     name = "name",
                     label = "Name:",
-                    defaultValue = restaurant?.name.orEmpty(),
+                    defaultValue = menu?.name.orEmpty(),
                     validators = listOf(Validator.Required())
                 ),
                 Field(
                     name = "description",
                     label = "Description:",
-                    defaultValue = restaurant?.description.orEmpty(),
+                    defaultValue = menu?.description.orEmpty(),
                     validators = listOf(Validator.Required())
                 ),
                 Field(
-                    name = "grade",
-                    label = "Grade:",
-                    defaultValue = restaurant?.grade.toString(),
+                    name = "price",
+                    label = "Price:",
+                    defaultValue = menu?.price.toString(),
                     autoComplete = false,
                     keyboardType = KeyboardType.Number,
                     validators = listOf(
                         Validator.Required(),
                         Validator.Regex(
-                            regex = "^(-)?\\d*(\\.\\d*)?\$",
+                            regex = "^\\d*(\\.\\d*)?\$",
                             message = "Veuiller entrer un flotant valide"
                         )
                     )
                 ),
-                Field(
-                    name = "localization",
-                    label = "Localization",
-                    defaultValue = restaurant?.localization.toString(),
-                    autoComplete = false,
-                    validators = listOf(
-                        Validator.Required(),
-                        Validator.Regex(
-                            regex = Utils.localizationRegex,
-                            message = "Please enter a good localization"
-                        )
-                    )
-                ),
-                Field(
-                    name = "phone_number",
-                    label = "Phone number",
-                    defaultValue = restaurant?.phone_number.toString(),
-                    autoComplete = false,
-                    keyboardType = KeyboardType.Phone,
-                    validators = listOf(
-                        Validator.Required(),
-                        Validator.Regex(
-                            regex = "^\\+\\d{2}\\d{10}$",
-                            message = "Please enter a good phone number"
-                        )
-                    )
 
                 ),
-                Field(
-                    name = "website",
-                    label = "Website",
-                    defaultValue = restaurant?.website.toString(),
-                    autoComplete = false,
-                    keyboardType = KeyboardType.Uri,
-                    validators = listOf(
-                        Validator.Required(),
-                        Validator.Regex(
-                            regex = Patterns.WEB_URL.pattern(),
-                            message = "Please enter a good web url"
-                        )
-                    )
-
-                ),
-                Field(
-                    name = "hours",
-                    label = "Hours",
-                    defaultValue = restaurant?.hours.toString(),
-                    autoComplete = false,
-                    validators = listOf(
-                        Validator.Required()
-                    )
-
-                )
-            ),
             onSubmitClick = {
                 if (state.validate()) {
                     val values = state.getData()
                     val bodyValue = RestaurantUpdateBody(
                         values["name"],
                         values["description"],
-                        values["grade"]?.toFloat(),
-                        values["image_url"],
-                        values["localization"],
-                        values["phone_number"],
-                        values["website"],
-                        values["hours"]
+                        values["price"]?.toFloat(),
+
                     )
-                    mrvm.updateRestaurant(id, bodyValue)
+                    mvm.(id, bodyValue)
                     navController.navigate(BottomNavItem.Restaurants.screen_route)
 
 

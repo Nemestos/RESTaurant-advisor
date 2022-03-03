@@ -15,6 +15,11 @@ data class RestaurantMenuResp(
     var data: List<Menu>
 )
 
+data class SingleMenuResp(
+    var data: Menu?
+)
+
+
 data class RestaurantErrorResp(
     var message: String?
 )

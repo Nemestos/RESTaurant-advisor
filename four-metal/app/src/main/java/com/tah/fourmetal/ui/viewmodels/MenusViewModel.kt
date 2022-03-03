@@ -2,6 +2,8 @@ package com.tah.fourmetal.ui.viewmodels
 
 import android.content.Context
 import android.widget.Toast
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -36,18 +38,25 @@ class MenusViewModel constructor(
                     _menus.emit(menus.body.data)
                 }
                 is NetworkResponse.Error -> {
-
+                    Toast.makeText(context, "can't get menus", Toast.LENGTH_SHORT).show()
                 }
             }
         }
 
     }
-    suspend fun getMenu(id:Int):Menu?{
-        viewModelScope.launch {
-            val retrofit = retrofitInstance.getInst()
-            wh
+
+    suspend fun getMenu(rest_id: Int, menu_id: Int): Menu? {
+        val retrofit = retrofitInstance.getInst().create(RestaurantService::class.java)
+        return when (val menu = retrofit.getMenuFromId(rest_id, menu_id)) {
+            is NetworkResponse.Success -> {
+                menu.body.data
+            }
+            is NetworkResponse.Error -> {
+                null
+            }
         }
     }
+
     fun onMenuClicked(id: Int) {
         _expandableMenus.value = _expandableMenus.value.toMutableList().also { list ->
             if (list.contains(id)) {
@@ -77,4 +86,5 @@ class MenusViewModel constructor(
 
         }
     }
+    fun onMenuUpdate(menuBody)
 }
