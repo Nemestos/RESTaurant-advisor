@@ -18,6 +18,12 @@ interface RestaurantService {
     @DELETE("restaurant/{rest_id}")
     suspend fun deleteRestaurantFromId(@Path("rest_id") rest_id: Int): NetworkResponse<RestaurantDeleteResp, RestaurantErrorResp>
 
+    @DELETE("restaurant/{rest_id}/menu/{menu_id}")
+    suspend fun deleteMenuFromId(
+        @Path("rest_id") rest_id: Int,
+        @Path("menu_id") menu_id: Int
+    ): NetworkResponse<RestaurantDeleteResp, RestaurantErrorResp>
+
     @PUT("restaurant/{rest_id}")
     suspend fun updateRestaurant(
         @Path("rest_id") rest_id: Int,

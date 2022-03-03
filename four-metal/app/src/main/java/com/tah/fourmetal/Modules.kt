@@ -22,6 +22,6 @@ val appModules = module {
 
     viewModel { CheckRightsViewModel(get()) }
     viewModel { RestaurantViewModel(get()) }
-    viewModel { MenusViewModel(get()) }
+    viewModel { MenusViewModel(androidContext(),get()) }
     viewModel { ManageRestaurantViewModel(androidContext(), get(), get()) }
 }

@@ -1,5 +1,7 @@
 package com.tah.fourmetal.ui.viewmodels
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.haroldadmin.cnradapter.NetworkResponse
@@ -13,6 +15,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class MenusViewModel constructor(
+    val context: Context,
+
     val retrofitInstance: RetrofitInstance
 ) : ViewModel() {
 
@@ -44,6 +48,25 @@ class MenusViewModel constructor(
                 list.remove(id)
             } else {
                 list.add(id)
+            }
+
+        }
+    }
+
+    fun onMenuRemove(rest_id: Int, menu_id: Int) {
+        viewModelScope.launch {
+            val retrofit = retrofitInstance.getInst().create(RestaurantService::class.java)
+            when (val resp = retrofit.deleteMenuFromId(rest_id, menu_id)) {
+                is NetworkResponse.Success -> {
+                    Toast.makeText(context, "success for delete menu", Toast.LENGTH_SHORT).show()
+                    //on refresh l'etat(on ne supprime par l'element directement de la liste : seul le back est une source
+                    //de confiance
+                    getMenus(rest_id)
+                }
+                is NetworkResponse.Error -> {
+                    Toast.makeText(context, "can't delete menu", Toast.LENGTH_SHORT).show()
+
+                }
             }
 
         }

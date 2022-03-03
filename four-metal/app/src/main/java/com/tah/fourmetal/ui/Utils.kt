@@ -4,19 +4,26 @@ import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import coil.compose.rememberImagePainter
 import com.tah.fourmetal.ui.theme.Reenie
+import com.tah.fourmetal.ui.viewmodels.AuthViewModel
+import com.tah.fourmetal.ui.viewmodels.CheckRightsViewModel
 import okhttp3.internal.immutableListOf
+import org.koin.androidx.compose.getViewModel
 
 data class Localization(
     val streetNumber: String?,
@@ -83,4 +90,37 @@ fun HeaderTitle(text: String) {
         color = MaterialTheme.colors.onBackground,
         textAlign = TextAlign.Center
     )
+}
+
+@Composable
+fun AbilityButton(
+    modifier: Modifier = Modifier,
+    textString: String,
+    fontSize: Int,
+    onClick: () -> Unit,
+    abilities: List<String>
+) {
+    val cvm = getViewModel<CheckRightsViewModel>()
+    val avm = getViewModel<AuthViewModel>()
+    val currUser = avm.sessionManager.currentUserFlow.collectAsState(initial = null)
+    val currState = cvm.currState
+    LaunchedEffect(key1 = Unit) {
+        cvm.checkRights(currUser.value, abilities)
+    }
+    if (currState) {
+        Button(
+            modifier = modifier,
+
+            onClick = onClick,
+
+            ) {
+            Text(
+                text = textString,
+                fontFamily = Reenie,
+                textAlign = TextAlign.Center,
+                fontSize = fontSize.sp
+            )
+        }
+    }
+
 }

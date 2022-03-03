@@ -36,6 +36,7 @@ import androidx.lifecycle.MutableLiveData
 import coil.compose.rememberImagePainter
 import com.tah.fourmetal.data.models.Menu
 import com.tah.fourmetal.data.models.Restaurant
+import com.tah.fourmetal.ui.AbilityButton
 import com.tah.fourmetal.ui.navigation.BottomNavItem
 import com.tah.fourmetal.ui.navigation.LocalNavController
 import com.tah.fourmetal.ui.navigation.NavItem
@@ -235,36 +236,3 @@ fun RestaurantDetailsBottom(
     }
 }
 
-@Composable
-fun AbilityButton(
-    modifier: Modifier = Modifier,
-    textString: String,
-    fontSize: Int,
-    onClick: () -> Unit,
-    abilities: List<String>
-) {
-    val cvm = getViewModel<CheckRightsViewModel>()
-    val avm = getViewModel<AuthViewModel>()
-    val currUser = avm.sessionManager.currentUserFlow.collectAsState(initial = null)
-    val currState = cvm.currState
-    LaunchedEffect(key1 = Unit) {
-        cvm.checkRights(currUser.value, abilities)
-    }
-    Log.d("currstate", currState.toString())
-    if (currState) {
-        Button(
-            modifier = modifier,
-
-            onClick = onClick,
-
-            ) {
-            Text(
-                text = textString,
-                fontFamily = Reenie,
-                textAlign = TextAlign.Center,
-                fontSize = fontSize.sp
-            )
-        }
-    }
-
-}

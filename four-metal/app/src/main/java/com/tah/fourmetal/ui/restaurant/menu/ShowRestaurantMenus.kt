@@ -18,8 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.tah.fourmetal.data.models.Menu
 import com.tah.fourmetal.data.models.Restaurant
+import com.tah.fourmetal.ui.AbilityButton
 import com.tah.fourmetal.ui.HeaderTitle
 import com.tah.fourmetal.ui.viewmodels.MenusViewModel
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
@@ -40,7 +42,7 @@ fun ShowRestaurantMenu(id: Int) {
         menusViewModel.getMenus(id)
     }
     Column(
-        modifier = Modifier.padding(top = 10.dp,start = 10.dp,end = 10.dp,bottom = 70.dp)
+        modifier = Modifier.padding(top = 10.dp, start = 10.dp, end = 10.dp, bottom = 70.dp)
     ) {
 
         HeaderTitle(text = "Nos Menus")
@@ -50,7 +52,9 @@ fun ShowRestaurantMenu(id: Int) {
                     menu = menu,
                     onMenuClicked = {
                         menusViewModel.onMenuClicked(menu.id)
-                        Log.d("debug:", "clicked")
+                    },
+                    onMenuDelete = {
+                        menusViewModel.onMenuRemove(id, menu.id)
                     },
                     expanded = expandableMenus.value.contains(menu.id)
                 )
@@ -108,7 +112,6 @@ fun MenuContent(
         exit = exitCollapse + exitFadeOut
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-//            Spacer(modifier = Modifier.heightIn(100.dp))
             Text(
                 "Description:${menu.description}",
                 textAlign = TextAlign.Center
@@ -117,6 +120,7 @@ fun MenuContent(
                 "Prix:${menu.price}\$",
                 textAlign = TextAlign.Center
             )
+
         }
 
     }
@@ -124,7 +128,12 @@ fun MenuContent(
 
 @SuppressLint("UnusedTransitionTargetStateParameter")
 @Composable
-fun ExpandableMenu(menu: Menu, onMenuClicked: () -> Unit, expanded: Boolean) {
+fun ExpandableMenu(
+    menu: Menu,
+    onMenuClicked: () -> Unit,
+    onMenuDelete: () -> Unit,
+    expanded: Boolean
+) {
     val transitionState = remember {
         MutableTransitionState(expanded).apply {
             targetState != !expanded
@@ -153,6 +162,12 @@ fun ExpandableMenu(menu: Menu, onMenuClicked: () -> Unit, expanded: Boolean) {
         Column {
             Card(modifier = Modifier.clickable { onMenuClicked() }, elevation = menuElevation) {
                 MenuTitle(title = menu.name)
+                AbilityButton(
+                    textString = "Delete",
+                    fontSize = 30,
+                    onClick = { onMenuDelete() },
+                    abilities = listOf("delete_menu")
+                )
 
             }
             MenuContent(menu = menu, visible = expanded, initialVisibility = true)
