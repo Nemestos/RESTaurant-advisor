@@ -16,11 +16,12 @@ import androidx.compose.ui.text.input.KeyboardType
 class Field(
     val name: String,
     val label: String = "",
+    val defaultValue: String = "",
     val validators: List<Validator>,
     val keyboardType: KeyboardType = KeyboardType.Text,
     val autoComplete: Boolean = true
 ) {
-    var text: String by mutableStateOf("")
+    var text: String by mutableStateOf(defaultValue)
     var lbl: String by mutableStateOf(label)
     var hasAnyError: Boolean by mutableStateOf(false)
 

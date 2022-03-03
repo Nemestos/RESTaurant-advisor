@@ -14,6 +14,7 @@ import com.tah.fourmetal.data.api.RetrofitInstance
 import com.tah.fourmetal.data.api.auth.AuthService
 import com.tah.fourmetal.data.api.auth.register.RegisterBody
 import com.tah.fourmetal.data.api.restaurants.RestaurantService
+import com.tah.fourmetal.data.api.restaurants.update.RestaurantUpdateBody
 import kotlinx.coroutines.launch
 
 class ManageRestaurantViewModel constructor(
@@ -35,6 +36,23 @@ class ManageRestaurantViewModel constructor(
                 }
                 is NetworkResponse.Error -> {
                     Toast.makeText(context, "you don't have the rights", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+        }
+    }
+
+    fun updateRestaurant(id: Int, updatedRestaurant: RestaurantUpdateBody) {
+        viewModelScope.launch {
+            val retrofit = retrofitInstance.getInst().create(RestaurantService::class.java)
+            when (val resp = retrofit.updateRestaurant(id, updatedRestaurant)) {
+                is NetworkResponse.Success -> {
+                    Toast.makeText(context, "Success for update", Toast.LENGTH_SHORT).show()
+                    restaurantViewModel.refreshRestaurantList()
+                }
+                is NetworkResponse.Error -> {
+                    Toast.makeText(context, "Can't update this restaurant", Toast.LENGTH_SHORT)
+                        .show()
                 }
 
             }

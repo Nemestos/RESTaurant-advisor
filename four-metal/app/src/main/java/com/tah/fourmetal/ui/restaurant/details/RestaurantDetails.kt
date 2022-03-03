@@ -177,9 +177,10 @@ fun RestaurantDetailsBottom(
     val navController = LocalNavController.current
     val context = LocalContext.current
     val mrvm = getViewModel<ManageRestaurantViewModel>()
-    Row(
+    Column(
         Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(15.dp, Alignment.End)
+        verticalArrangement = Arrangement.spacedBy(15.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
             modifier = btnModifier,
@@ -223,6 +224,14 @@ fun RestaurantDetailsBottom(
             },
             abilities = listOf("delete_restaurant")
         )
+        AbilityButton(
+            textString = "Update",
+            fontSize = fontSize,
+            onClick = {
+                navController.navigate("${NavItem.RestaurantUpdateForm.route_base}/${restaurant?.id}")
+            },
+            abilities = listOf("delete_restaurant")
+        )
     }
 }
 
@@ -250,7 +259,7 @@ fun AbilityButton(
 
             ) {
             Text(
-                text = "DELETE",
+                text = textString,
                 fontFamily = Reenie,
                 textAlign = TextAlign.Center,
                 fontSize = fontSize.sp

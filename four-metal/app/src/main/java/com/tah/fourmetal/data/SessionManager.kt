@@ -60,8 +60,6 @@ class SessionManager(private val context: Context) {
             .map { preferences ->
                 val id = preferences[ID]
                 val authToken = preferences[AUTH_TOKEN]
-                Log.d("id::", id.toString())
-                Log.d("authToken::", authToken.toString())
                 if (id == null || authToken == null) {
                     null
                 } else {

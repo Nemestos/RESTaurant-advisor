@@ -26,11 +26,14 @@ data class Localization(
 )
 
 class Utils {
+
     companion object {
+        val localizationRegex =
+            "([0-9]+)?,? ?([^0-9]+)?([0-9\\s]+)?\\s?([^0-9]+)?"
+
         fun toLocalization(raw: String): Localization {
-            val regex =
-                "([0-9]+)?,? ?([^0-9]+)?([0-9\\s]+)?\\s?([^0-9]+)?".toRegex()
-            val result = regex.matchEntire(raw)!!.groups
+
+            val result = localizationRegex.toRegex().matchEntire(raw)!!.groups
             val localization = Localization(
                 result[1]?.value,
                 result[2]?.value,
