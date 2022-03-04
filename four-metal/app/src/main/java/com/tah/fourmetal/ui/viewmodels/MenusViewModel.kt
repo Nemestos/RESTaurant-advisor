@@ -11,6 +11,7 @@ import com.haroldadmin.cnradapter.NetworkResponse
 import com.tah.fourmetal.data.api.RetrofitInstance
 import com.tah.fourmetal.data.api.auth.AuthService
 import com.tah.fourmetal.data.api.restaurants.RestaurantService
+import com.tah.fourmetal.data.api.restaurants.update.MenuUpdateBody
 import com.tah.fourmetal.data.models.Menu
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -86,5 +87,21 @@ class MenusViewModel constructor(
 
         }
     }
-    fun onMenuUpdate(menuBody)
+
+    fun onMenuUpdate(rest_id: Int, menu_id: Int, menuBody: MenuUpdateBody) {
+        viewModelScope.launch {
+            val retrofit = retrofitInstance.getInst().create(RestaurantService::class.java)
+            when (val resp = retrofit.updateMenu(rest_id, menu_id, menuBody)) {
+                is NetworkResponse.Success -> {
+                    Toast.makeText(context, resp.body.message, Toast.LENGTH_SHORT).show()
+                    getMenus(rest_id)
+                }
+                is NetworkResponse.Error -> {
+                    Toast.makeText(context, resp.body?.message, Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+            }
+        }
+    }
 }

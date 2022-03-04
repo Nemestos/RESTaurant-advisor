@@ -19,10 +19,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.tah.fourmetal.data.api.restaurants.update.MenuUpdateBody
 import com.tah.fourmetal.data.models.Menu
 import com.tah.fourmetal.data.models.Restaurant
 import com.tah.fourmetal.ui.AbilityButton
 import com.tah.fourmetal.ui.HeaderTitle
+import com.tah.fourmetal.ui.navigation.LocalNavController
+import com.tah.fourmetal.ui.navigation.NavItem
 import com.tah.fourmetal.ui.viewmodels.MenusViewModel
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 import org.koin.androidx.compose.getViewModel
@@ -38,6 +41,8 @@ fun ShowRestaurantMenu(id: Int) {
     val menusViewModel = getViewModel<MenusViewModel>()
     val menus = menusViewModel.menus.collectAsState()
     val expandableMenus = menusViewModel.expandableMenus.collectAsState()
+    val navController = LocalNavController.current
+
     LaunchedEffect(key1 = Unit) {
         menusViewModel.getMenus(id)
     }
@@ -56,6 +61,9 @@ fun ShowRestaurantMenu(id: Int) {
                     onMenuDelete = {
                         menusViewModel.onMenuRemove(id, menu.id)
                     },
+                    menuUpdateForm = {
+                        navController.navigate("${NavItem.MenuUpdateForm.route_base}/${id}/${menu.id}")
+                    },
                     expanded = expandableMenus.value.contains(menu.id)
                 )
             }
@@ -69,7 +77,6 @@ fun MenuTitle(title: String) {
     Text(
         text = title,
         modifier = Modifier
-            .fillMaxWidth()
             .padding(16.dp),
         textAlign = TextAlign.Center
     )
@@ -132,6 +139,7 @@ fun ExpandableMenu(
     menu: Menu,
     onMenuClicked: () -> Unit,
     onMenuDelete: () -> Unit,
+    menuUpdateForm: () -> Unit,
     expanded: Boolean
 ) {
     val transitionState = remember {
@@ -161,13 +169,23 @@ fun ExpandableMenu(
     ) {
         Column {
             Card(modifier = Modifier.clickable { onMenuClicked() }, elevation = menuElevation) {
-                MenuTitle(title = menu.name)
-                AbilityButton(
-                    textString = "Delete",
-                    fontSize = 30,
-                    onClick = { onMenuDelete() },
-                    abilities = listOf("delete_menu")
-                )
+                Row(modifier = Modifier.fillMaxWidth()) {
+
+                    MenuTitle(title = menu.name)
+                    AbilityButton(
+                        textString = "Delete",
+                        fontSize = 30,
+                        onClick = { onMenuDelete() },
+                        abilities = listOf("delete_menu")
+                    )
+                    AbilityButton(
+                        textString = "Update",
+                        fontSize = 30,
+                        onClick = { menuUpdateForm() },
+                        abilities = listOf("put_menu")
+                    )
+                }
+
 
             }
             MenuContent(menu = menu, visible = expanded, initialVisibility = true)

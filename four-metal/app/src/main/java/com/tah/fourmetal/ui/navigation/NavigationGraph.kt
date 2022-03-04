@@ -14,6 +14,7 @@ import com.tah.fourmetal.ui.restaurant.RestaurantListScreen
 import com.tah.fourmetal.ui.restaurant.RestaurantsScreen
 import com.tah.fourmetal.ui.restaurant.ShowRestaurantContent
 import com.tah.fourmetal.ui.restaurant.details.RestaurantUpdateScreen
+import com.tah.fourmetal.ui.restaurant.menu.MenuUpdateScreen
 import com.tah.fourmetal.ui.restaurant.menu.ShowRestaurantMenu
 import com.tah.fourmetal.ui.viewmodels.AuthViewModel
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
@@ -41,8 +42,18 @@ fun NavigationGraph(navController: NavHostController) {
         composable(
             NavItem.RestaurantUpdateForm.screen_route,
             arguments = NavItem.RestaurantUpdateForm.arguments
-        ){
-            it.arguments?.getInt("rest_id")?.let { it1-> RestaurantUpdateScreen(it1) }
+        ) {
+            it.arguments?.getInt("rest_id")?.let { it1 -> RestaurantUpdateScreen(it1) }
+        }
+        composable(
+            NavItem.MenuUpdateForm.screen_route,
+            arguments = NavItem.MenuUpdateForm.arguments
+        ) {
+            val rest_id = it.arguments?.getInt("rest_id")
+            val menu_id = it.arguments?.getInt("menu_id")
+            if (rest_id != null && menu_id != null) {
+                MenuUpdateScreen(rest_id = rest_id, menu_id = menu_id)
+            }
         }
         composable(BottomNavItem.Login.screen_route) {
             LoginScreen()

@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
+import com.tah.fourmetal.data.api.restaurants.update.MenuUpdateBody
 import com.tah.fourmetal.data.api.restaurants.update.RestaurantUpdateBody
 import com.tah.fourmetal.data.models.Menu
 import com.tah.fourmetal.data.models.Restaurant
@@ -82,14 +83,13 @@ fun MenuUpdateScreen(rest_id: Int, menu_id: Int) {
             onSubmitClick = {
                 if (state.validate()) {
                     val values = state.getData()
-                    val bodyValue = RestaurantUpdateBody(
+                    val bodyValue = MenuUpdateBody(
                         values["name"],
                         values["description"],
                         values["price"]?.toFloat(),
-
-                    )
-                    mvm.(id, bodyValue)
-                    navController.navigate(BottomNavItem.Restaurants.screen_route)
+                        )
+                    mvm.onMenuUpdate(rest_id, menu_id, bodyValue)
+                    navController.navigateUp()
 
 
                 }
