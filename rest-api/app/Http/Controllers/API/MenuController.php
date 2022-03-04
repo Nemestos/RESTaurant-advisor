@@ -18,7 +18,7 @@ class MenuController extends Controller
         return MenuResource::collection($restaurant->menus);
     }
 
-    public function get(Request $request, $rest_id, $menu_id)
+    public function get(Request $request,int  $rest_id, int $menu_id)
     {
         $restaurant = Restaurant::find($rest_id);
 
