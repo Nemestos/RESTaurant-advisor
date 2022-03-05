@@ -21,10 +21,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.tah.fourmetal.ui.form.Field
-import com.tah.fourmetal.ui.form.Form
-import com.tah.fourmetal.ui.form.FormState
-import com.tah.fourmetal.ui.form.Validator
+import com.tah.fourmetal.ui.form.*
 import com.tah.fourmetal.ui.viewmodels.AuthViewModel
 import org.koin.androidx.compose.getViewModel
 
@@ -50,11 +47,8 @@ fun RegisterScreen() {
                     label = "Login:",
                     validators = listOf(Validator.Required())
                 ),
-                Field(
+                PasswordField(
                     name = "password",
-                    label = "Password:",
-                    keyboardType = KeyboardType.Password,
-
                     validators = listOf(Validator.Required())
                 ),
                 Field(

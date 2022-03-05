@@ -5,13 +5,20 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 
 open class Field(
     val name: String,
@@ -95,14 +102,17 @@ open class Field(
 
 class PasswordField(
     name: String,
-    label: String = "",
+    label: String = "Password",
     defaultValue: String = "",
     validators: List<Validator>,
-    keyboardType: KeyboardType = KeyboardType.Text,
-    autoComplete: Boolean = true
+    keyboardType: KeyboardType = KeyboardType.Password,
+    autoComplete: Boolean = false
 ) : Field(name, label, defaultValue, validators, keyboardType, autoComplete) {
+
+
     @Composable
     override fun content() {
+        var passwordVisibility by remember { mutableStateOf(false) }
         TextField(
             value = text,
             isError = hasAnyError,
@@ -111,11 +121,19 @@ class PasswordField(
                 .padding()
                 .clip(RoundedCornerShape(20))
                 .background(Color.White),
-            visualTransformation = 
+            visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(
                 keyboardType = keyboardType,
                 autoCorrect = autoComplete
             ),
+            trailingIcon = {
+                val image =
+                    if (passwordVisibility) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
+                    Icon(imageVector = image, contentDescription = "")
+
+                }
+            },
             onValueChange = {
                 clearErr()
                 text = it

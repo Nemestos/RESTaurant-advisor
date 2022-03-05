@@ -19,10 +19,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.tah.fourmetal.data.SessionManager
-import com.tah.fourmetal.ui.form.Field
-import com.tah.fourmetal.ui.form.Form
-import com.tah.fourmetal.ui.form.FormState
-import com.tah.fourmetal.ui.form.Validator
+import com.tah.fourmetal.ui.form.*
 import com.tah.fourmetal.ui.viewmodels.AuthViewModel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
@@ -52,10 +49,8 @@ fun LoginScreen() {
                     autoComplete = false,
                     validators = listOf(Validator.Required())
                 ),
-                Field(
+                PasswordField(
                     name = "password",
-                    label = "Password:",
-                    keyboardType = KeyboardType.Password,
                     validators = listOf(Validator.Required())
                 )
             ),
