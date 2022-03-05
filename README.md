@@ -37,3 +37,14 @@ php artisan test
 - Utilisation d'un Design Pattern Adapter pour convertir la réponse de l'API de generations d'URLS d'image en quelque chose de comprehensible et ainsi plusieurs API de différentes sources peuvent être utilisés sans changer l'interface de Base 
 - Seeders fonctionnels avec des factorys cohérentes
 - Utilisation des JsonResources pour permettre de convertir un modèle Laravel en quelque chose d'utilisable par quelqu'un qui utilise l'API(exemple : obfusquer le password hashé)
+
+## Valeur ajoutée
+- ***Controllers/AuthController***(gestion de tout ce qui est en rapport avec l'authentification, la generation de tokens et la verificaiton des droits)
+- ***Controllers/MenuController***(CRUD basique pour gerer les menus)
+- ***Controllers/RestaurantController***(CRUD basique pour gerer les restaurants)
+
+- ***Controllers/UsersController***(permet de retourner tout les utilisateurs)
+
+- ***Middleware/CheckMenuRestaurant***(très utile pour verifier pour chaque route, si existence, les ids passé, et ainsi prevenir avant de guérir)
+
+- ***Resources/*\***(toute les resources json retournées par l'API comprenant entre autre les choses utiles par l'utilisateur et le client)

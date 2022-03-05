@@ -1,7 +1,6 @@
 package com.tah.fourmetal.ui.restaurant.menu
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.clickable
@@ -11,23 +10,17 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.tah.fourmetal.data.api.restaurants.update.MenuUpdateBody
 import com.tah.fourmetal.data.models.Menu
-import com.tah.fourmetal.data.models.Restaurant
 import com.tah.fourmetal.ui.AbilityButton
 import com.tah.fourmetal.ui.HeaderTitle
 import com.tah.fourmetal.ui.navigation.LocalNavController
 import com.tah.fourmetal.ui.navigation.NavItem
 import com.tah.fourmetal.ui.viewmodels.MenusViewModel
-import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 import org.koin.androidx.compose.getViewModel
 
 const val EXPAND_DURATION = 500

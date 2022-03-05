@@ -14,7 +14,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-const val BASE_URL = "http://192.168.56.1:81/api/"
+const val BASE_URL = "http://192.168.1.19:81/api/"
 
 class RetrofitInstance constructor(val sessionManager: SessionManager) {
 

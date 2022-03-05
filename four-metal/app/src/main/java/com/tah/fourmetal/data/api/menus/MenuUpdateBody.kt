@@ -1,4 +1,4 @@
-package com.tah.fourmetal.data.api.restaurants.update
+package com.tah.fourmetal.data.api.menus
 
 import com.tah.fourmetal.data.models.Restaurant
 
