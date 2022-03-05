@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
+import androidx.compose.runtime.snapshots.SnapshotMutableState
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -23,14 +24,20 @@ import com.tah.fourmetal.ui.navigation.NavItem
 fun RestaurantList(
     restaurantList: SnapshotStateList<Restaurant>,
     isRefreshing: Boolean,
+    filter: String,
     onRefresh: () -> Unit
 ) {
     val length = restaurantList.size
     val navController = LocalNavController.current
+    val filtered = restaurantList.filter {
+        it.name.orEmpty().lowercase().contains(filter.lowercase())
+    }
     Column(modifier = Modifier.padding(2.dp)) {
         SwipeRefresh(state = rememberSwipeRefreshState(isRefreshing), onRefresh) {
             LazyColumn(modifier = Modifier.fillMaxHeight()) {
-                itemsIndexed(restaurantList) { index, rest ->
+                itemsIndexed(
+                    filtered
+                ) { index, rest ->
                     RestaurantListItem(rest) {
 
                         navController.navigate("${NavItem.RestaurantDetail.route_base}/${rest.id}")

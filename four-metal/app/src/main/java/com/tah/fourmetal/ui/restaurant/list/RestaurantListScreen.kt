@@ -2,25 +2,22 @@ package com.tah.fourmetal.ui.restaurant
 
 import android.util.Log
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.tah.fourmetal.ui.viewmodels.RestaurantViewModel
 import org.koin.androidx.compose.getViewModel
-import org.koin.core.context.GlobalContext.get
 
 
 @Composable
 fun RestaurantListScreen() {
     val rvm = getViewModel<RestaurantViewModel>()
     val isRefreshing by rvm.isRefreshing.collectAsState()
+    var currSearchFilter by remember { mutableStateOf("") }
     LaunchedEffect(Unit, block = {
         rvm.getRestaurantList()
         Log.d("restaurants:", rvm.errorMsg)
@@ -38,9 +35,14 @@ fun RestaurantListScreen() {
                 .fillMaxHeight()
         ) {
             RestaurantListTop(title = "four metal")
+            SearchBar(value = currSearchFilter, onValueChange = { currSearchFilter = it })
             if (rvm.errorMsg.isEmpty()) {
-
-                RestaurantList(rvm.restaurantList, isRefreshing) { rvm.refreshRestaurantList() }
+                Log.d("debug", currSearchFilter)
+                RestaurantList(
+                    rvm.restaurantList,
+                    isRefreshing,
+                    currSearchFilter
+                ) { rvm.refreshRestaurantList() }
             } else {
                 RestaurantListError(rvm.errorMsg)
 
@@ -48,5 +50,25 @@ fun RestaurantListScreen() {
         }
 
     }
+}
+
+@Composable
+fun SearchBar(modifier: Modifier = Modifier, value: String, onValueChange: (String) -> Unit) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(10.dp), horizontalArrangement = Arrangement.Center
+    ) {
+        TextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = value,
+            onValueChange = onValueChange,
+            trailingIcon = {
+                Icon(imageVector = Icons.Filled.Search, contentDescription = "search ")
+            }
+        )
+
+    }
+
 }
 
