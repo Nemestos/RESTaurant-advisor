@@ -144,7 +144,7 @@ fun RestaurantUpdateScreen(id: Int) {
                         values["hours"]
                     )
                     mrvm.updateRestaurant(id, bodyValue)
-                    navController.navigate(BottomNavItem.Restaurants.screen_route)
+                    navController.navigateUp()
 
 
                 }

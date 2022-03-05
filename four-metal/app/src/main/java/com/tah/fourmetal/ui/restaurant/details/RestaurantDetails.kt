@@ -38,6 +38,7 @@ import com.tah.fourmetal.ui.AbilityButton
 import com.tah.fourmetal.ui.navigation.BottomNavItem
 import com.tah.fourmetal.ui.navigation.LocalNavController
 import com.tah.fourmetal.ui.navigation.NavItem
+import com.tah.fourmetal.ui.restaurant.details.OpenMaps
 import com.tah.fourmetal.ui.theme.Reenie
 import com.tah.fourmetal.ui.theme.Roboto
 import com.tah.fourmetal.ui.viewmodels.ManageRestaurantViewModel
@@ -247,6 +248,7 @@ fun RestaurantActionsButtons(
         )
 
     }
+    OpenMaps(address = restaurant?.localization.orEmpty(), text = "ADDRESSE", fontSize = fontSize)
 }
 
 @Composable
