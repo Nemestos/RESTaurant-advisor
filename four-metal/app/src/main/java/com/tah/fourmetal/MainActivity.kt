@@ -58,7 +58,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
+            //permet d'injecter automatiquement le nav controller à tout les composables de cett
+            //hierarchie
             CompositionLocalProvider(LocalNavController provides rememberNavController()) {
+                //on definit un thème globale
                 MaterialTheme(
                     typography = RobotoTypo,
                     colors = FourMetalColors,

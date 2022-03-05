@@ -69,7 +69,6 @@ class AuthViewModel constructor(
                     )
                 }
                 is NetworkResponse.Error -> {
-                    Log.d("error", "lol")
                     errorMsg = resp.body?.message.orEmpty()
                     if (resp.body?.errors != null) {
 

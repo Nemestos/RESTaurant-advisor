@@ -13,7 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 
-class Field(
+open class Field(
     val name: String,
     val label: String = "",
     val defaultValue: String = "",
@@ -30,19 +30,19 @@ class Field(
         clearErr()
     }
 
-    private fun showErr(error: String) {
+    protected fun showErr(error: String) {
         hasAnyError = true
         lbl = error
 
     }
 
-    private fun clearErr() {
+    protected fun clearErr() {
         hasAnyError = false
         lbl = label
     }
 
     @Composable
-    fun content() {
+    open fun content() {
         TextField(
             value = text,
             isError = hasAnyError,
@@ -89,6 +89,39 @@ class Field(
                 }
             }
         }.all { it }
+    }
+
+}
+
+class PasswordField(
+    name: String,
+    label: String = "",
+    defaultValue: String = "",
+    validators: List<Validator>,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    autoComplete: Boolean = true
+) : Field(name, label, defaultValue, validators, keyboardType, autoComplete) {
+    @Composable
+    override fun content() {
+        TextField(
+            value = text,
+            isError = hasAnyError,
+            label = { Text(text = lbl) },
+            modifier = Modifier
+                .padding()
+                .clip(RoundedCornerShape(20))
+                .background(Color.White),
+            visualTransformation = 
+            keyboardOptions = KeyboardOptions(
+                keyboardType = keyboardType,
+                autoCorrect = autoComplete
+            ),
+            onValueChange = {
+                clearErr()
+                text = it
+            }
+        )
+
     }
 
 }

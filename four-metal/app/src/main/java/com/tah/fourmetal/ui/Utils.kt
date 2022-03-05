@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
+import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import com.tah.fourmetal.ui.theme.Reenie
 import com.tah.fourmetal.ui.viewmodels.AuthViewModel
@@ -71,7 +72,7 @@ fun RandomImage(modifier: Modifier = Modifier, elts: List<Int> = immutableListOf
     val random = elts.random()
     val context = LocalContext.current
     Image(
-        rememberImagePainter(ContextCompat.getDrawable(context, random)),
+        rememberAsyncImagePainter(ContextCompat.getDrawable(context, random)),
         "random image",
         modifier = modifier
     )
