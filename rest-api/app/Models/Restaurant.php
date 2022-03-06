@@ -19,6 +19,22 @@ class Restaurant extends Model
         'hours'
     ];
 
+    public static function getMean($id)
+    {
+        $restaurant = Restaurant::find($id);
+        $reviews = $restaurant->reviews;
+        if (!$reviews->count()) {
+            return $restaurant->grade;
+        }
+        $sum = 0;
+        $length = 0;
+        $reviews->each(function (Review $review) use (&$length, &$sum) {
+            $sum += $review->grade;
+            $length += 1;
+        });
+        return round($sum / $length,2);
+    }
+
     public function menus()
     {
         return $this->hasMany(Menu::class, "restaurant_id");

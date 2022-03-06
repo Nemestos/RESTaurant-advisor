@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Restaurant;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class RestaurantResource extends JsonResource
@@ -18,7 +19,7 @@ class RestaurantResource extends JsonResource
             "id" => $this->id,
             "name" => $this->name,
             "description" => $this->description,
-            "grade" => $this->grade,
+            "grade" => Restaurant::getMean($this->id),
             "image_url" => $this->image_url != null ? $this->image_url : config("app.default_image_url"),
             "localization" => $this->localization,
             "phone_number" => $this->phone_number,
