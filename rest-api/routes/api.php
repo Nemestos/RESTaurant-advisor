@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\MenuController;
 use App\Http\Controllers\API\RestaurantController;
+use App\Http\Controllers\API\ReviewsController;
 use App\Http\Controllers\API\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,8 @@ Route::get("/restaurants", [RestaurantController::class, "index"]);
 Route::get("/restaurant/{id}", [RestaurantController::class, "get"])->middleware(["menu-rest"]);
 Route::get("/restaurant/{id}/menus", [MenuController::class, "index"])->middleware(["menu-rest"]);
 Route::get("/restaurant/{rest_id}/menu/{menu_id}", [MenuController::class, "get"])->middleware(["menu-rest"]);
+Route::get("/reviews", [ReviewsController::class, "index"]);
+Route::get("/reviews/{rest_id}", [ReviewsController::class, "get"])->middleware(["menu-rest"]);
 Route::group([
     "middleware" => ["auth:sanctum"],
 ], function () {

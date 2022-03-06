@@ -18,9 +18,15 @@ class Restaurant extends Model
         'website',
         'hours'
     ];
+
     public function menus()
     {
-        return $this->hasMany(Menu::class,"restaurant_id");
+        return $this->hasMany(Menu::class, "restaurant_id");
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, "restaurant_id");
     }
 
     protected $collection = "restaurants";

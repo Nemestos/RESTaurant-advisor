@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
 
         $this->call([
-            UsersSeeder::class,
             RestaurantsSeeder::class,
+            UsersSeeder::class,
 
         ]);
         Schema::enableForeignKeyConstraints();

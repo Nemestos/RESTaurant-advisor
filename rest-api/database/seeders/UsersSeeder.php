@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Restaurant;
+use App\Models\Review;
 use App\Models\User;
 use App\Token;
 use Illuminate\Database\Seeder;
@@ -18,7 +20,17 @@ class UsersSeeder extends Seeder
     {
         User::truncate();
         DB::table("personal_access_tokens")->truncate();
-        User::factory()->count(3)->create();
+        $users = User::factory()->count(3)->create();
+        $users->each(function (User $user) {
+            $reviews = Review::factory(3)->create();
+            $user->reviews()->saveMany($reviews);
+            $restaurants = Restaurant::inRandomOrder()->limit(3)->get();
+            for ($i = 0; $i < 3; $i++) {
+                $restaurants[$i]->reviews()->save($reviews[$i]);
+            }
+
+        });
+
         $admin = User::factory()->create([
                 "login" => "admin",
                 "password" => bcrypt(config("app.admin_password")),

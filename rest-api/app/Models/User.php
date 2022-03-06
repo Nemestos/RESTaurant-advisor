@@ -24,6 +24,10 @@ class User extends Authenticatable
         'age',
     ];
 
+    /**
+     * toute les fonctions utiles relatif à un user
+     * (sa création avec un token et sa gestion)
+     */
     public static function createNormalUser(?array $infos): array
     {
 
@@ -71,5 +75,9 @@ class User extends Authenticatable
         return $token;
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, "user_id");
+    }
 
 }

@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Gère tout ce qui est relatif au register/login avec la generation d'un jwt
+ */
 class AuthController extends Controller
 {
 

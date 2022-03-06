@@ -38,13 +38,3 @@ php artisan test
 - Seeders fonctionnels avec des factorys cohérentes
 - Utilisation des JsonResources pour permettre de convertir un modèle Laravel en quelque chose d'utilisable par quelqu'un qui utilise l'API(exemple : obfusquer le password hashé)
 
-## Valeur ajoutée
-- ***Controllers/AuthController***(gestion de tout ce qui est en rapport avec l'authentification, la generation de tokens et la verificaiton des droits)
-- ***Controllers/MenuController***(CRUD basique pour gerer les menus)
-- ***Controllers/RestaurantController***(CRUD basique pour gerer les restaurants)
-
-- ***Controllers/UsersController***(permet de retourner tout les utilisateurs)
-
-- ***Middleware/CheckMenuRestaurant***(très utile pour verifier pour chaque route, si existence, les ids passé, et ainsi prevenir avant de guérir)
-
-- ***Resources/*\***(toute les resources json retournées par l'API comprenant entre autre les choses utiles par l'utilisateur et le client)

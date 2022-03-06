@@ -19,9 +19,10 @@ val appModules = module {
     single { RetrofitInstance(get()) }
 
     viewModel { AuthViewModel(get(), get()) }
+    viewModel { ReviewsViewModel(get(), androidContext()) }
 
     viewModel { CheckRightsViewModel(get()) }
     viewModel { RestaurantViewModel(get()) }
-    viewModel { MenusViewModel(androidContext(),get()) }
+    viewModel { MenusViewModel(androidContext(), get()) }
     viewModel { ManageRestaurantViewModel(androidContext(), get(), get()) }
 }

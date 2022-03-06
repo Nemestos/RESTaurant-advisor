@@ -39,6 +39,7 @@ import com.tah.fourmetal.ui.navigation.BottomNavItem
 import com.tah.fourmetal.ui.navigation.LocalNavController
 import com.tah.fourmetal.ui.navigation.NavItem
 import com.tah.fourmetal.ui.restaurant.details.OpenMaps
+import com.tah.fourmetal.ui.restaurant.review.ReviewList
 import com.tah.fourmetal.ui.theme.Reenie
 import com.tah.fourmetal.ui.theme.Roboto
 import com.tah.fourmetal.ui.viewmodels.ManageRestaurantViewModel
@@ -74,6 +75,7 @@ fun ShowRestaurantContent(id: Int) {
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             RestaurantDetailInfos(restaurant)
+            restaurant?.id?.let { ReviewList(it) }
             RestaurantDetailsBottom(
                 restaurant = restaurant,
                 btnModifier = Modifier.wrapContentSize(),

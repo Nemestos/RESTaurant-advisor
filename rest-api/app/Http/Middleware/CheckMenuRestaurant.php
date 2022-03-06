@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CheckMenuRestaurant
 {
     /**
-     * Handle an incoming request.
+     * permet juste de check avec erreur que les ids sont pas invalides
      *
      * @param \Illuminate\Http\Request $request
      * @param \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next

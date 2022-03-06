@@ -13,4 +13,5 @@ Utilisation de l'API des restaurants avec gestion d'un utlisateur et de ses droi
 - On peut reserver en lançant l'application telephone avec le numero du restaurant
 - On peut ouvrir le navigateur sur l'URL du restaurant en clickant sur un lien
 - On peut ouvrir Maps avec l'addresse du restaurant(si l'application n'existe pas : dans le cas d'un emulateur, un toast d'erreur s'affiche) 
+- On peut faire une recherche pas nom(avec affichage instantané)
   

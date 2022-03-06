@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use function response;
 
+/**
+ * crud basique pour les menus
+ */
 class MenuController extends Controller
 {
     public function index(Request $request, $id)
