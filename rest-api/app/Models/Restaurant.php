@@ -22,6 +22,9 @@ class Restaurant extends Model
     public static function getMean($id)
     {
         $restaurant = Restaurant::find($id);
+        if ($restaurant == null) {
+            return 0;
+        }
         $reviews = $restaurant->reviews;
         if (!$reviews->count()) {
             return $restaurant->grade;
@@ -32,7 +35,7 @@ class Restaurant extends Model
             $sum += $review->grade;
             $length += 1;
         });
-        return round($sum / $length,2);
+        return round($sum / $length, 2);
     }
 
     public function menus()
